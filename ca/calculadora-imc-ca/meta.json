@@ -1,0 +1,13 @@
+{
+  "id": "calculadora-imc-ca",
+  "title": "Calculadora de l'IMC",
+  "lang": "ca",
+  "country": "ES",
+  "desc": "Calculeu el vostre índex de massa corporal fàcilment",
+  "category": "calculator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.873487",
+  "type": "generator",
+  "item_count": 4
+}

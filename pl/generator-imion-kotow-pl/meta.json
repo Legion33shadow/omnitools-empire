@@ -1,0 +1,13 @@
+{
+  "id": "generator-imion-kotow-pl",
+  "title": "Generator Imion dla Kotów",
+  "lang": "pl",
+  "country": "PL",
+  "desc": "Znajdź idealne imię dla swojego kota",
+  "category": "generator",
+  "aff_url": "https://www.amazon.pl/?tag=VOTRETAG",
+  "aff_text": "Akcesoria dla kotów →",
+  "built_at": "2026-04-27 02:29:53.870804",
+  "type": "generator",
+  "item_count": 20
+}

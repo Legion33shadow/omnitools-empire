@@ -1,0 +1,13 @@
+{
+  "id": "kalkolu-bmi-mt",
+  "title": "Kalkolu tal-BMI",
+  "lang": "mt",
+  "country": "MT",
+  "desc": "Ikkalkolah l-indiċi tal-massa tal-ġisem tiegħek",
+  "category": "calculator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.868639",
+  "type": "generator",
+  "item_count": 4
+}

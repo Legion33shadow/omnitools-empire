@@ -1,0 +1,13 @@
+{
+  "id": "bmi-raknare-se",
+  "title": "BMI Räknare",
+  "lang": "sv",
+  "country": "SE",
+  "desc": "Beräkna ditt Body Mass Index snabbt",
+  "category": "calculator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.867139",
+  "type": "generator",
+  "item_count": 6
+}

@@ -1,0 +1,13 @@
+{
+  "id": "noms-gats-ca",
+  "title": "Generador de Noms per a Gats",
+  "lang": "ca",
+  "country": "ES",
+  "desc": "Trobeu el nom perfecte per al vostre gat",
+  "category": "generator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.873711",
+  "type": "generator",
+  "item_count": 15
+}

@@ -1,0 +1,13 @@
+{
+  "id": "calculadora-imc-br",
+  "title": "Calculadora de IMC",
+  "lang": "pt",
+  "country": "BR",
+  "desc": "Calcule seu Índice de Massa Corporal rapidamente",
+  "category": "calculator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.874677",
+  "type": "generator",
+  "item_count": 6
+}

@@ -1,0 +1,13 @@
+{
+  "id": "nomes-gatos-br",
+  "title": "Gerador de Nomes para Gatos",
+  "lang": "pt",
+  "country": "BR",
+  "desc": "Encontre o nome perfeito para seu gato",
+  "category": "generator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.874407",
+  "type": "generator",
+  "item_count": 15
+}

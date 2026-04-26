@@ -1,0 +1,13 @@
+{
+  "id": "bmi-beregner-dk",
+  "title": "BMI Beregner",
+  "lang": "da",
+  "country": "DK",
+  "desc": "Beregn dit Body Mass Index nemt og præcist",
+  "category": "calculator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.866031",
+  "type": "generator",
+  "item_count": 6
+}

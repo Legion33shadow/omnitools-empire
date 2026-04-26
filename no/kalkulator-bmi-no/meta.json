@@ -1,0 +1,13 @@
+{
+  "id": "kalkulator-bmi-no",
+  "title": "BMI Kalkulator",
+  "lang": "no",
+  "country": "NO",
+  "desc": "Beregn din kroppsmasseindeks raskt og enkelt",
+  "category": "calculator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.864540",
+  "type": "generator",
+  "item_count": 6
+}

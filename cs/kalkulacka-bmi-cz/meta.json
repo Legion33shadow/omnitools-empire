@@ -1,0 +1,13 @@
+{
+  "id": "kalkulacka-bmi-cz",
+  "title": "Kalkulačka BMI",
+  "lang": "cs",
+  "country": "CZ",
+  "desc": "Vypočítejte svůj index tělesné hmotnosti rychle",
+  "category": "calculator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.872803",
+  "type": "generator",
+  "item_count": 4
+}

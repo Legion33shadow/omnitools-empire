@@ -1,0 +1,13 @@
+{
+  "id": "kalkulator-bmi-sk",
+  "title": "Kalkulačka BMI",
+  "lang": "sk",
+  "country": "SK",
+  "desc": "Vypočítajte si svoj index telesnej hmotnosti",
+  "category": "calculator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:29:53.873264",
+  "type": "generator",
+  "item_count": 4
+}
