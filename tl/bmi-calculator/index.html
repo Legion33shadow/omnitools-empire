@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BMI Kalkulator - Korpo Mass Index</title>
+<meta name="description" content="Tl: Bmi Calculator - Kibat">
+<link rel="canonical" href="https://omnitools.app/tl/bmi-calculator/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication",
+  "name":"BMI Kalkulator - Korpo Mass Index","description":"Tl: Bmi Calculator - Kibat",
+  "applicationCategory":"UtilitiesApplication","operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<style>:root{--bg:#0d0d0e;--card:#16171a;--text:#eaeaea;--muted:#9aa0a6;--accent:#00ffcc;--btn:#00ffcc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);
+     min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:12px}
+.wrap{width:100%;max-width:760px}
+nav{padding:10px 0;font-size:.9rem}nav a{color:var(--muted);text-decoration:none}
+.card{background:var(--card);border-radius:18px;padding:28px 20px;
+      box-shadow:0 8px 32px rgba(0,0,0,.45);margin-bottom:14px}
+h1{font-size:1.5rem;color:var(--accent);margin-bottom:6px}
+.desc{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.result-box{background:#0b0c0e;border:1px solid #252629;border-radius:12px;
+            padding:16px;font-size:1.4rem;font-weight:800;min-height:56px;
+            word-break:break-word;transition:opacity .18s;margin-bottom:14px}
+.btn{display:block;width:100%;border:0;border-radius:999px;padding:14px;
+     background:var(--btn);color:#001;font-weight:800;font-size:1rem;cursor:pointer;
+     margin-bottom:10px;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:#1fad54;color:#fff;font-weight:600;font-size:.92rem}
+.hist{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.hist span{background:#1c1d20;border-radius:20px;padding:4px 12px;
+           font-size:.8rem;color:var(--muted);cursor:pointer}
+.hist span:hover{color:var(--accent)}
+.ad{width:100%;min-height:90px;background:#111315;border:1px dashed #272829;
+    border-radius:10px;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-size:.78rem;margin:10px 0}
+.seo-card{background:var(--card);border-radius:14px;padding:24px 20px;
+          font-size:.88rem;line-height:1.72;color:#c8c8c8;white-space:pre-wrap}
+.seo-card h2{color:var(--accent);font-size:1rem;margin-bottom:10px}
+footer{margin:20px 0;color:var(--muted);font-size:.75rem;text-align:center}
+footer a{color:var(--muted);margin:0 6px}
+.form-g{margin-bottom:14px}
+label{display:block;margin-bottom:5px;color:var(--muted);font-size:.88rem}
+input[type=number],select,textarea{width:100%;padding:11px;background:#0b0c0e;
+  border:1px solid #252629;color:#fff;border-radius:10px;font-size:.95rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+#calc-result{font-size:1.6rem;font-weight:800;color:var(--accent);padding:14px;
+             background:#0b0c0e;border-radius:10px;margin:14px 0;text-align:center;
+             min-height:52px}
+@media(max-width:480px){h1{font-size:1.25rem}.result-box{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="/tl/">&#8592; Hōmu</a></nav>
+  <div class="ad">[Advertisement]</div>
+  <div class="card">
+    <h1>BMI Kalkulator - Korpo Mass Index</h1>
+    <p class="desc">Tl: Bmi Calculator - Kibat</p>
+    <div class="form-g"><label>Peso (kg)</label><input type="number" id="w" placeholder="70" min="1" max="400"></div><div class="form-g"><label>Tl: Tl (cm)</label><input type="number" id="h" placeholder="175" min="50" max="250"></div>
+    <div id="calc-result">—</div>
+    <button class="btn" onclick="calculate()">Kalkula</button>
+  </div>
+  <div class="ad">[Advertisement]</div>
+  <div class="seo-card">
+    <h2>&#9432; About</h2>
+    <div>Tulong sa Pagsasaalang-alang sa Iyong Katawan: Isang Gabay sa Calculator ng Index ng Mga Katangian ng Katawan
+
+Ang Calculator ng Index ng Mga Katangian ng Katawan (BMI) ay isang malayang gawain sa internet na tumutulung sa mga tao na magpatala ng kanilang timbang at katanin upang matukoy kung mayroon silang sobrang timbang o mababa ang timbang. Ang calculator na ito ay madaling gamitin at walang bayad.
+
+Paano Magamit ang Calculator ng BMI:
+
+1. Pumunta sa website ng BMI Calculator at klick sa button ng "Calculate" upang magpatala ng iyong timbang at katanin.
+2. I-input ang iyong timbang at katanin sa mga kaso ng calculator. Kailangan mong pumili ng iyong kalagayan sa pamumuhay (masigla, madalas, o walang gawain).
+3. Klick sa "Calculate" upang makita ang iyong index ng BMI.
+
+Ang Calculator ng BMI ay mabisang pangunahing para sa mga Pilipino dahil ang sobrang timbang at mababang timbang ay mga pangunahing health concerns sa Pilipinas. Ang paggamit ng calculator na ito ay maaaring tulungan kang makabuo ng isang mas mapayapang at mas masaganang buhay.
+
+Mga Katanungan at Sagot:
+
+- Paano ko gagamitin ang calculator kung ang aking pagkain ay hindi normal?
+Ang calculator ay gumagamit ng iyong timbang at katanin upang magpaabot ng iyong index ng BMI. Ang pagkain mo ay hindi gaanong nagiging factor dito.
+
+- Anong mga benepisyo ng paggamit ng calculator?
+Ang calculator ay maaaring tulungan kang makabuo ng isang mas mapayapang at mas masaganang buhay, at maaaring gumawa ka ng mga pagbabago sa iyong pamumuhay upang mapataas ang iyong index ng BMI.
+
+- Kailangan kong magpatala ng ang aking pagkain sa calculator?
+Wala, ang calculator ay gumagamit ng iyong timbang at katanin upang magpaabot ng iyong index ng BMI.</div>
+  </div>
+  <footer>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </footer>
+</div>
+<script>
+function calculate(){
+  var w=parseFloat(document.getElementById('w').value);
+  var h=parseFloat(document.getElementById('h').value)/100;
+  if(!w||!h||h<=0){
+    document.getElementById('calc-result').textContent='⚠️ Please enter valid values';
+    return;
+  }
+  var bmi=(w/(h*h)).toFixed(1);
+  var cat='';
+  if(bmi<18.5)cat='Underweight 🔵';
+  else if(bmi<25)cat='Normal weight ✅';
+  else if(bmi<30)cat='Overweight 🟡';
+  else cat='Obese 🔴';
+  document.getElementById('calc-result').textContent='BMI: '+bmi+' — '+cat;
+}</script>
+</body>
+</html>

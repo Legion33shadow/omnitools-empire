@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fotostudio — Gratis bilderedigeringsprogram [Norsk]</title>
+<meta name="description" content="Gratis fotoredigering i nettleseren. Ingen nedlasting. Fungerer på alle enheter.">
+<style>
+:root{--p:#1a1a2e;--a:#e94560;--bg:#1e1e2e;--panel:#2d2d4e;--txt:#eee}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);
+     display:flex;flex-direction:column;height:100vh;overflow:hidden}
+.toolbar{background:var(--p);padding:8px 16px;display:flex;align-items:center;
+         gap:12px;border-bottom:2px solid var(--a);flex-wrap:wrap}
+.toolbar h1{font-size:1rem;color:var(--a);margin-right:auto}
+.btn{background:var(--panel);color:var(--txt);border:1px solid #444;
+     padding:6px 14px;border-radius:6px;cursor:pointer;font-size:.85rem;
+     transition:.2s;white-space:nowrap}
+.btn:hover{background:var(--a);border-color:var(--a)}
+.btn.premium{background:#ffd700;color:#000;border-color:#ffd700}
+.workspace{display:flex;flex:1;overflow:hidden}
+.sidebar{width:220px;background:var(--panel);padding:12px;overflow-y:auto;
+         border-right:1px solid #444;flex-shrink:0}
+.sidebar h3{color:var(--a);font-size:.85rem;margin:8px 0 4px;text-transform:uppercase}
+.tool-btn{width:100%;text-align:left;margin:2px 0;background:#1a1a2e;
+          color:var(--txt);border:1px solid #333;padding:7px 10px;
+          border-radius:6px;cursor:pointer;font-size:.83rem}
+.tool-btn:hover{background:var(--a);border-color:var(--a)}
+.canvas-area{flex:1;display:flex;flex-direction:column;align-items:center;
+             justify-content:center;overflow:auto;padding:20px;background:#111}
+#canvas{border:2px solid #444;cursor:crosshair;
+        box-shadow:0 0 30px rgba(0,0,0,.5);max-width:100%}
+.drop-zone{border:3px dashed #444;border-radius:16px;padding:60px 40px;
+           text-align:center;color:#666;font-size:1.1rem;cursor:pointer}
+.drop-zone:hover{border-color:var(--a);color:var(--a)}
+.slider-row{display:flex;align-items:center;gap:8px;margin:6px 0}
+.slider-row label{font-size:.78rem;min-width:70px;color:#aaa}
+input[type=range]{flex:1;accent-color:var(--a)}
+.value-badge{font-size:.75rem;color:var(--a);min-width:28px;text-align:right}
+.status{background:var(--p);padding:6px 16px;font-size:.78rem;color:#888;
+        border-top:1px solid #333}
+/* AD zone */
+.ad-strip{background:#111;padding:8px;text-align:center;min-height:60px;
+          border-top:1px solid #222;font-size:.75rem;color:#555}
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <h1>🎨 Fotostudio</h1>
+  <button class="btn" onclick="openFile()">📂 Åpne</button>
+  <button class="btn" onclick="applyFilter('grayscale')">⚫ Gråtoner</button>
+  <button class="btn" onclick="applyFilter('sepia')">🟤 Sepia</button>
+  <button class="btn" onclick="applyFilter('invert')">🔄 Inverter</button>
+  <button class="btn" onclick="rotateImage()">↻ Roter</button>
+  <button class="btn" onclick="flipH()">↔ Speil</button>
+  <button class="btn" onclick="addText()">📝 Tekst</button>
+  <button class="btn" onclick="cropImage()">✂️ Beskjær</button>
+  <button class="btn" onclick="saveImage()">💾 Lagre PNG</button>
+  <button class="btn premium" onclick="saveHD()">⭐ Lagre HD</button>
+</div>
+
+<div class="workspace">
+  <div class="sidebar">
+    <h3>Justeringer</h3>
+    <div class="slider-row">
+      <label>Lysstyrke</label>
+      <input type="range" id="brightness" min="-100" max="100" value="0"
+             oninput="applyAdjust()">
+      <span class="value-badge" id="b-val">0</span>
+    </div>
+    <div class="slider-row">
+      <label>Kontrast</label>
+      <input type="range" id="contrast" min="-100" max="100" value="0"
+             oninput="applyAdjust()">
+      <span class="value-badge" id="c-val">0</span>
+    </div>
+    <div class="slider-row">
+      <label>Metning</label>
+      <input type="range" id="saturation" min="-100" max="100" value="0"
+             oninput="applyAdjust()">
+      <span class="value-badge" id="s-val">0</span>
+    </div>
+    <div class="slider-row">
+      <label>Skarphet</label>
+      <input type="range" id="sharpness" min="0" max="100" value="0"
+             oninput="applyAdjust()">
+      <span class="value-badge" id="sh-val">0</span>
+    </div>
+    <div class="slider-row">
+      <label>Uskarphet</label>
+      <input type="range" id="blur" min="0" max="20" value="0"
+             oninput="applyAdjust()">
+      <span class="value-badge" id="bl-val">0</span>
+    </div>
+    <h3>Filtre</h3>
+    <button class="tool-btn" onclick="applyFilter('none')">Ingen filter</button>
+    <button class="tool-btn" onclick="applyFilter('grayscale')">Gråtoner</button>
+    <button class="tool-btn" onclick="applyFilter('sepia')">Sepia</button>
+    <button class="tool-btn" onclick="applyFilter('invert')">Inverter farger</button>
+    <button class="tool-btn" onclick="applyFilter('vintage')">Vintage</button>
+    <button class="tool-btn" onclick="applyFilter('cool')">Kald blå</button>
+    <button class="tool-btn" onclick="applyFilter('warm')">Varm</button>
+    <button class="tool-btn" onclick="applyFilter('dramatic')">Dramatisk</button>
+    <h3>Resize</h3>
+    <input type="number" id="rw" placeholder="Bredde px" style="width:100%;
+           padding:5px;background:#1a1a2e;border:1px solid #444;
+           color:#fff;border-radius:4px;margin:2px 0;font-size:.82rem">
+    <input type="number" id="rh" placeholder="Høyde px" style="width:100%;
+           padding:5px;background:#1a1a2e;border:1px solid #444;
+           color:#fff;border-radius:4px;margin:2px 0;font-size:.82rem">
+    <button class="tool-btn" onclick="resizeImage()" style="margin-top:4px">
+      Endre størrelse</button>
+  </div>
+
+  <div class="canvas-area" id="canvas-area">
+    <div class="drop-zone" id="dropzone"
+         onclick="openFile()"
+         ondrop="handleDrop(event)"
+         ondragover="event.preventDefault()">
+      📸 Dra og slipp et bilde her<br>
+      <small style="font-size:.8rem;color:#555">eller klikk for å velge</small>
+    </div>
+    <canvas id="canvas" style="display:none"></canvas>
+  </div>
+</div>
+
+<div class="ad-strip">
+  <!-- ADSENSE ICI -->
+  💡 <a href="https://omnitools.app" style="color:#e94560" target="_blank">
+  OmniTools — Alle gratis nettsidetools</a>
+</div>
+
+<div class="status" id="status">Klar — åpne et bilde for å begynne</div>
+
+<input type="file" id="file-input" accept="image/*" style="display:none"
+       onchange="loadImage(event)">
+
+<script>
+let canvas = document.getElementById('canvas');
+let ctx    = canvas.getContext('2d');
+let origData = null;
+let imgObj   = null;
+let currentFilter = 'none';
+
+function openFile() {
+  document.getElementById('file-input').click();
+}
+
+function loadImage(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const img = new Image();
+    img.onload = function() {
+      imgObj = img;
+      canvas.width  = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      origData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      document.getElementById('dropzone').style.display = 'none';
+      canvas.style.display = 'block';
+      document.getElementById('rw').value = img.width;
+      document.getElementById('rh').value = img.height;
+      setStatus('Bilde lastet: ' + img.width + 'x' + img.height + ' px');
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    document.getElementById('file-input').files = e.dataTransfer.files;
+    loadImage({target: {files: [file]}});
+  }
+}
+
+function applyFilter(f) {
+  currentFilter = f;
+  applyAdjust();
+}
+
+function applyAdjust() {
+  if (!origData) return;
+  const b  = parseInt(document.getElementById('brightness').value);
+  const c  = parseInt(document.getElementById('contrast').value);
+  const s  = parseInt(document.getElementById('saturation').value);
+  const bl = parseFloat(document.getElementById('blur').value);
+
+  document.getElementById('b-val').textContent  = b;
+  document.getElementById('c-val').textContent  = c;
+  document.getElementById('s-val').textContent  = s;
+  document.getElementById('bl-val').textContent = bl;
+
+  ctx.putImageData(origData, 0, 0);
+
+  // CSS filters (rapides, côté GPU)
+  let filters = '';
+  if (b !== 0)  filters += `brightness(${1 + b/100}) `;
+  if (c !== 0)  filters += `contrast(${1 + c/100}) `;
+  if (s !== 0)  filters += `saturate(${1 + s/100}) `;
+  if (bl > 0)   filters += `blur(${bl}px) `;
+
+  switch(currentFilter) {
+    case 'grayscale':  filters += 'grayscale(1) '; break;
+    case 'sepia':      filters += 'sepia(0.8) '; break;
+    case 'invert':     filters += 'invert(1) '; break;
+    case 'vintage':    filters += 'sepia(0.4) contrast(1.1) brightness(0.9) '; break;
+    case 'cool':       filters += 'hue-rotate(200deg) saturate(1.2) '; break;
+    case 'warm':       filters += 'hue-rotate(-20deg) saturate(1.3) '; break;
+    case 'dramatic':   filters += 'contrast(1.5) brightness(0.8) saturate(0.8) '; break;
+  }
+
+  canvas.style.filter = filters.trim();
+  setStatus('Filtre appliqué : ' + (currentFilter === 'none' ? 'Ingen' : currentFilter));
+}
+
+function rotateImage() {
+  if (!imgObj) return;
+  const tmpC = document.createElement('canvas');
+  tmpC.width  = canvas.height;
+  tmpC.height = canvas.width;
+  const tCtx = tmpC.getContext('2d');
+  tCtx.translate(tmpC.width/2, tmpC.height/2);
+  tCtx.rotate(Math.PI/2);
+  tCtx.drawImage(canvas, -canvas.width/2, -canvas.height/2);
+  canvas.width  = tmpC.width;
+  canvas.height = tmpC.height;
+  ctx.drawImage(tmpC, 0, 0);
+  origData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  setStatus('Rotert 90°');
+}
+
+function flipH() {
+  if (!origData) return;
+  ctx.save();
+  ctx.translate(canvas.width, 0);
+  ctx.scale(-1, 1);
+  ctx.drawImage(canvas, 0, 0);
+  ctx.restore();
+  origData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  setStatus('Speilet horisontalt');
+}
+
+function addText() {
+  if (!origData) { alert('Last opp et bilde først'); return; }
+  const text = prompt('Skriv inn tekst:');
+  if (!text) return;
+  const size = parseInt(prompt('Tekststørrelse (px):', '48')) || 48;
+  const color = prompt('Farge (hex eller navn):', '#ffffff') || '#ffffff';
+  ctx.font = `bold ${size}px Segoe UI, sans-serif`;
+  ctx.fillStyle = color;
+  ctx.strokeStyle = 'rgba(0,0,0,0.7)';
+  ctx.lineWidth = size / 10;
+  ctx.strokeText(text, canvas.width/2, canvas.height/2);
+  ctx.fillText(text, canvas.width/2, canvas.height/2);
+  origData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  setStatus('Tekst lagt til');
+}
+
+function cropImage() {
+  if (!origData) return;
+  const x = parseInt(prompt('Venstre (px):', '0')) || 0;
+  const y = parseInt(prompt('Topp (px):', '0')) || 0;
+  const w = parseInt(prompt('Bredde (px):', canvas.width)) || canvas.width;
+  const h = parseInt(prompt('Høyde (px):', canvas.height)) || canvas.height;
+  const imgD = ctx.getImageData(x, y, w, h);
+  canvas.width = w; canvas.height = h;
+  ctx.putImageData(imgD, 0, 0);
+  origData = ctx.getImageData(0, 0, w, h);
+  setStatus('Beskjært: ' + w + 'x' + h + ' px');
+}
+
+function resizeImage() {
+  if (!imgObj) return;
+  const nw = parseInt(document.getElementById('rw').value);
+  const nh = parseInt(document.getElementById('rh').value);
+  if (!nw || !nh) return;
+  const tmpC = document.createElement('canvas');
+  tmpC.width = nw; tmpC.height = nh;
+  const tCtx = tmpC.getContext('2d');
+  tCtx.drawImage(canvas, 0, 0, nw, nh);
+  canvas.width = nw; canvas.height = nh;
+  ctx.drawImage(tmpC, 0, 0);
+  origData = ctx.getImageData(0, 0, nw, nh);
+  setStatus('Endret størrelse til ' + nw + 'x' + nh + ' px');
+}
+
+function saveImage() {
+  if (!origData) { alert('Last opp et bilde først'); return; }
+  // Appliquer les filtres CSS dans le canvas
+  const tmpC = document.createElement('canvas');
+  tmpC.width = canvas.width; tmpC.height = canvas.height;
+  const tCtx = tmpC.getContext('2d');
+  tCtx.filter = canvas.style.filter || 'none';
+  tCtx.drawImage(canvas, 0, 0);
+  const link = document.createElement('a');
+  link.download = 'omnitools-photo.png';
+  link.href = tmpC.toDataURL('image/png');
+  link.click();
+  setStatus('Lagret som PNG');
+}
+
+function saveHD() {
+  // Premium : simplement même chose mais on pourrait limiter
+  saveImage();
+  setStatus('⭐ HD lagret — Takk for støtten!');
+}
+
+function setStatus(msg) {
+  document.getElementById('status').textContent = msg;
+}
+</script>
+</body>
+</html>

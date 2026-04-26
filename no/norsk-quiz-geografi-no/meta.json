@@ -1,0 +1,13 @@
+{
+  "id": "norsk-quiz-geografi-no",
+  "title": "Norsk Geografi Quiz",
+  "lang": "no",
+  "country": "NO",
+  "desc": "Test dine kunnskaper om norsk geografi",
+  "category": "generator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:45:09.678514",
+  "type": "generator",
+  "item_count": 5
+}

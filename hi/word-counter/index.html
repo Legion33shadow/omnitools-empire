@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>शब्द गिनती — शब्द संख्या वाक्य</title>
+<meta name="description" content="मुफ्त शब्द गिनती सॉफ़्टवेयर - शब्द विशेषण वाक्य। तुरंत, निजी, ब्राउज़र-आधारित।">
+<link rel="canonical" href="https://omnitools.app/hi/word-counter/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication",
+  "name":"शब्द गिनती — शब्द संख्या वाक्य","description":"मुफ्त शब्द गिनती सॉफ़्टवेयर - शब्द विशेषण वाक्य। तुरंत, निजी, ब्राउज़र-आधारित।",
+  "applicationCategory":"UtilitiesApplication","operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<style>:root{--bg:#0d0d0e;--card:#16171a;--text:#eaeaea;--muted:#9aa0a6;--accent:#00ffcc;--btn:#00ffcc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);
+     min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:12px}
+.wrap{width:100%;max-width:760px}
+nav{padding:10px 0;font-size:.9rem}nav a{color:var(--muted);text-decoration:none}
+.card{background:var(--card);border-radius:18px;padding:28px 20px;
+      box-shadow:0 8px 32px rgba(0,0,0,.45);margin-bottom:14px}
+h1{font-size:1.5rem;color:var(--accent);margin-bottom:6px}
+.desc{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.result-box{background:#0b0c0e;border:1px solid #252629;border-radius:12px;
+            padding:16px;font-size:1.4rem;font-weight:800;min-height:56px;
+            word-break:break-word;transition:opacity .18s;margin-bottom:14px}
+.btn{display:block;width:100%;border:0;border-radius:999px;padding:14px;
+     background:var(--btn);color:#001;font-weight:800;font-size:1rem;cursor:pointer;
+     margin-bottom:10px;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:#1fad54;color:#fff;font-weight:600;font-size:.92rem}
+.hist{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.hist span{background:#1c1d20;border-radius:20px;padding:4px 12px;
+           font-size:.8rem;color:var(--muted);cursor:pointer}
+.hist span:hover{color:var(--accent)}
+.ad{width:100%;min-height:90px;background:#111315;border:1px dashed #272829;
+    border-radius:10px;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-size:.78rem;margin:10px 0}
+.seo-card{background:var(--card);border-radius:14px;padding:24px 20px;
+          font-size:.88rem;line-height:1.72;color:#c8c8c8;white-space:pre-wrap}
+.seo-card h2{color:var(--accent);font-size:1rem;margin-bottom:10px}
+footer{margin:20px 0;color:var(--muted);font-size:.75rem;text-align:center}
+footer a{color:var(--muted);margin:0 6px}
+.form-g{margin-bottom:14px}
+label{display:block;margin-bottom:5px;color:var(--muted);font-size:.88rem}
+input[type=number],select,textarea{width:100%;padding:11px;background:#0b0c0e;
+  border:1px solid #252629;color:#fff;border-radius:10px;font-size:.95rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+#calc-result{font-size:1.6rem;font-weight:800;color:var(--accent);padding:14px;
+             background:#0b0c0e;border-radius:10px;margin:14px 0;text-align:center;
+             min-height:52px}
+@media(max-width:480px){h1{font-size:1.25rem}.result-box{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="/hi/">&#8592; घर</a></nav>
+  <div class="ad">[Advertisement]</div>
+  <div class="card">
+    <h1>शब्द गिनती — शब्द संख्या वाक्य</h1>
+    <p class="desc">मुफ्त शब्द गिनती सॉफ़्टवेयर - शब्द विशेषण वाक्य। तुरंत, निजी, ब्राउज़र-आधारित।</p>
+    <textarea id="txt" placeholder="Paste or type your text here..." style="height:150px;margin-bottom:14px"></textarea><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px"><div style="background:#0b0c0e;padding:10px;border-radius:8px;text-align:center"><div style="font-size:1.5rem;font-weight:800;color:var(--accent)" id="wc">0</div><div style="font-size:.75rem;color:var(--muted)">शब्द</div></div><div style="background:#0b0c0e;padding:10px;border-radius:8px;text-align:center"><div style="font-size:1.5rem;font-weight:800;color:var(--accent)" id="cc">0</div><div style="font-size:.75rem;color:var(--muted)">व्यक्ति</div></div><div style="background:#0b0c0e;padding:10px;border-radius:8px;text-align:center"><div style="font-size:1.5rem;font-weight:800;color:var(--accent)" id="sc">0</div><div style="font-size:.75rem;color:var(--muted)">वाक्य</div></div><div style="background:#0b0c0e;padding:10px;border-radius:8px;text-align:center"><div style="font-size:1.5rem;font-weight:800;color:var(--accent)" id="pc">0</div><div style="font-size:.75rem;color:var(--muted)">परिभाषाएँ</div></div></div>
+    <div id="calc-result">—</div>
+    <button class="btn" onclick="calculate()">गणना करें</button>
+  </div>
+  <div class="ad">[Advertisement]</div>
+  <div class="seo-card">
+    <h2>&#9432; About</h2>
+    <div>Word Counter: एक उपयोगी वेब टूल की जानकारी
+
+स्वागत है! Word Counter एक मुफ्त वेब टूल है जो आपको अपने पाठ की शब्दों, अक्षरों और वाक्यों की गिनती करने में मदद करता है। यह टूल आपको अपने पाठ की गुणवत्ता और संरचना को बेहतर ढंग से समझने में सहायता करता है।
+
+उपयोग करने के लिए तीन चरण:
+
+1. Word Counter की वेबसाइट पर जाएं और अपने पाठ को टाइप करें। आप अपने पाठ को किसी भी फ़ाइल के माध्यम से भी अपलोड कर सकते हैं।
+2. पाठ को भरने के बाद, "गिनती" बटन पर क्लिक करें। यह पाठ की शब्दों, अक्षरों और वाक्यों की गिनती करेगा।
+3. गिनती के परिणाम देखने के लिए, "परिणाम" पृष्ठ पर जाएं। यहां आपको अपने पाठ की गुणवत्ता के बारे में विस्तृत जानकारी मिलेगी।
+
+हिंदी उपयोगकर्ताओं के लिए यह उपयोगी:
+
+Word Counter हिंदी भाषा के लिए भी उपयुक्त है। यह आपको अपने हिंदी पाठ की गुणवत्ता और संरचना को समझने में मदद करता है। यह टूल आपको अपने लेखन को बेहतर बनाने में सहायता करता है, जिससे आप अपने दर्शकों को प्रभावी ढंग से संवाद करने में सक्षम होते हैं।
+
+प्रश्न और उत्तर:
+
+प्रश्न 1: क्या Word Counter फ्री है?
+उत्तर: हाँ, Word Counter मुफ्त है और आप इसे बिना किसी शुल्क के उपयोग कर सकते हैं।
+
+प्रश्न 2: क्या Word Counter हिंदी पाठ को समर्थन करता है?
+उत्तर: हाँ, Word Counter हिंदी पाठ को समर्थन करता है और आपको अपने हिंदी पाठ की गुणवत्ता को समझने में मदद करता है।
+
+प्रश्न 3: क्या मैं Word Counter की जानकारी को साझा कर सकता हूं?
+उत्तर: हाँ, आप Word Counter की जानकारी को अपने दोस्तों और परिवार के साथ साझा कर सकते हैं।</div>
+  </div>
+  <footer>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </footer>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var ta=document.getElementById('txt');
+  if(!ta)return;
+  ta.addEventListener('input',function(){
+    var t=this.value;
+    document.getElementById('cc').textContent=t.length;
+    document.getElementById('wc').textContent=t.trim()===''?0:t.trim().split(/\s+/).length;
+    document.getElementById('sc').textContent=
+      t.split(/[.!?؟।]+/).filter(function(s){return s.trim().length>0;}).length;
+    document.getElementById('pc').textContent=
+      t.split(/
++/).filter(function(p){return p.trim().length>0;}).length;
+  });
+});
+function calculate(){}</script>
+</body>
+</html>

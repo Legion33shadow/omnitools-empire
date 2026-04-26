@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Musiikkistudio — Ilmainen verkkoselainpohjainen DAW [Suomi]</title>
+<meta name="description" content="Ilmainen musiikkistudio selaimessa. Luo musiikkia ilman asennusta.">
+<style>
+:root{--p:#1a0a2e;--a:#9d4edd;--bg:#0d0d1a;--panel:#1a1a2e;--txt:#e0d0ff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--txt);
+     display:flex;flex-direction:column;min-height:100vh}
+header{background:var(--p);padding:12px 20px;display:flex;align-items:center;
+       gap:14px;border-bottom:2px solid var(--a)}
+header h1{font-size:1.1rem;color:var(--a);margin-right:auto}
+.btn{background:var(--panel);color:var(--txt);border:1px solid #444;
+     padding:8px 16px;border-radius:8px;cursor:pointer;font-size:.88rem;
+     transition:.2s}
+.btn:hover{background:var(--a);border-color:var(--a)}
+.btn.play{background:#28a745;border-color:#28a745}
+.btn.stop{background:#dc3545;border-color:#dc3545}
+.btn.rec{background:#dc3545;border-color:#dc3545;animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.main{display:flex;flex:1;overflow:hidden}
+.instruments{width:200px;background:var(--panel);padding:12px;overflow-y:auto;
+             border-right:1px solid #333}
+.instruments h3{color:var(--a);font-size:.82rem;margin:8px 0 4px;text-transform:uppercase}
+.inst-btn{width:100%;text-align:left;padding:8px 10px;margin:2px 0;
+          background:#0d0d1a;border:1px solid #333;color:var(--txt);
+          border-radius:6px;cursor:pointer;font-size:.84rem}
+.inst-btn:hover,.inst-btn.active{background:var(--a);border-color:var(--a)}
+.sequencer{flex:1;padding:16px;overflow:auto;background:#0a0a14}
+.sequencer h3{color:var(--a);margin-bottom:12px;font-size:.9rem}
+.grid{display:flex;flex-direction:column;gap:4px}
+.track{display:flex;align-items:center;gap:6px}
+.track-name{min-width:100px;font-size:.8rem;color:#aaa;text-align:right}
+.track-cells{display:flex;gap:3px;flex-wrap:nowrap}
+.cell{width:32px;height:28px;border-radius:4px;cursor:pointer;
+      background:#1a1a2e;border:1px solid #333;transition:.1s}
+.cell:hover{background:#3a3a6e}
+.cell.on{background:var(--a);border-color:var(--a);box-shadow:0 0 8px var(--a)}
+.cell.beat{background:#2a1a3e;border-color:#5a3a6e}
+.controls{background:var(--panel);padding:14px 20px;border-top:1px solid #333;
+          display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.tempo-ctrl{display:flex;align-items:center;gap:8px;font-size:.85rem}
+.tempo-ctrl input{width:80px;padding:4px 8px;background:#0d0d1a;
+                  border:1px solid #444;color:var(--txt);border-radius:4px}
+.ad-strip{background:#111;padding:8px;text-align:center;font-size:.75rem;color:#555}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎵 Musiikkistudio</h1>
+  <button class="btn play" onclick="playSeq()" id="play-btn">▶ Toista</button>
+  <button class="btn stop" onclick="stopSeq()">⏹ Pysäytä</button>
+  <div class="tempo-ctrl">
+    <label>BPM</label>
+    <input type="number" id="bpm" value="120" min="40" max="240">
+  </div>
+  <button class="btn" onclick="clearAll()">🗑 Tyhjennä</button>
+  <button class="btn" onclick="exportAudio()">⬇ Vie ääni</button>
+</header>
+
+<div class="main">
+  <div class="instruments">
+    <h3>Instrumentit</h3>
+    <button class="inst-btn active" onclick="selectInst(this,'kick')"
+            data-inst="kick">🥁 Bassorumpu</button>
+    <button class="inst-btn" onclick="selectInst(this,'snare')"
+            data-inst="snare">🥁 Virvelirumpu</button>
+    <button class="inst-btn" onclick="selectInst(this,'hihat')"
+            data-inst="hihat">🎼 Hi-Hat</button>
+    <button class="inst-btn" onclick="selectInst(this,'bass')"
+            data-inst="bass">🎸 Basso</button>
+    <button class="inst-btn" onclick="selectInst(this,'piano')"
+            data-inst="piano">🎹 Piano</button>
+    <button class="inst-btn" onclick="selectInst(this,'synth')"
+            data-inst="synth">🎹 Syntetisaattori</button>
+    <h3>Voimakkuus</h3>
+    <div style="padding:4px 0">
+      <input type="range" id="master-vol" min="0" max="1" step="0.05" value="0.8"
+             style="width:100%;accent-color:var(--a)">
+      <div style="font-size:.75rem;color:#888;text-align:center">Master Volume</div>
+    </div>
+    <h3>Efektit</h3>
+    <div style="padding:4px 0;font-size:.8rem">
+      <label style="color:#aaa">Reverb</label>
+      <input type="range" id="reverb" min="0" max="1" step="0.05" value="0.1"
+             style="width:100%;accent-color:var(--a)">
+    </div>
+  </div>
+
+  <div class="sequencer">
+    <h3>Sekvensseri — 16 askelta</h3>
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="tempo-ctrl">
+    <span>Askel: </span>
+    <span id="step-display" style="color:var(--a);font-weight:bold">0</span>
+    <span> / 16</span>
+  </div>
+  <div class="tempo-ctrl">
+    <span>Tila: </span>
+    <span id="status" style="color:var(--a)">Pysäytetty</span>
+  </div>
+</div>
+
+<div class="ad-strip">
+  <!-- ADSENSE ICI -->
+  💡 <a href="https://omnitools.app" style="color:#9d4edd" target="_blank">
+  OmniTools — Ilmaiset verkkotyökalut</a>
+</div>
+
+<script>
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+let ac = null;
+
+const TRACKS = ['kick','snare','hihat','bass','piano','synth'];
+const TRACK_LABELS = {
+  kick:'Bassorumpu', snare:'Virvelirumpu', hihat:'Hi-Hat',
+  bass:'Basso', piano:'Piano', synth:'Syntetisaattori'
+};
+const STEPS = 16;
+let grid = {};
+let playing = false;
+let stepIdx = 0;
+let intervalId = null;
+let currentInst = 'kick';
+
+// Init grid
+TRACKS.forEach(t => { grid[t] = new Array(STEPS).fill(false); });
+
+function buildGrid() {
+  const g = document.getElementById('grid');
+  g.innerHTML = '';
+  TRACKS.forEach(t => {
+    const row = document.createElement('div');
+    row.className = 'track';
+    const label = document.createElement('div');
+    label.className = 'track-name';
+    label.textContent = TRACK_LABELS[t];
+    row.appendChild(label);
+    const cells = document.createElement('div');
+    cells.className = 'track-cells';
+    for(let i=0; i<STEPS; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell' + (i%4===0 ? ' beat' : '');
+      cell.id = t+'-'+i;
+      cell.onclick = () => toggleCell(t, i);
+      cells.appendChild(cell);
+    }
+    row.appendChild(cells);
+    g.appendChild(row);
+  });
+}
+
+function toggleCell(track, step) {
+  grid[track][step] = !grid[track][step];
+  const cell = document.getElementById(track+'-'+step);
+  cell.classList.toggle('on', grid[track][step]);
+}
+
+function selectInst(btn, inst) {
+  document.querySelectorAll('.inst-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentInst = inst;
+}
+
+function synth(type, freq, dur, vol=0.5) {
+  if (!ac) ac = new AudioContext();
+  const osc = ac.createOscillator();
+  const gain = ac.createGain();
+  const master = parseFloat(document.getElementById('master-vol').value);
+  osc.connect(gain);
+  gain.connect(ac.destination);
+  osc.type = type;
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(vol * master, ac.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + dur);
+  osc.start(ac.currentTime);
+  osc.stop(ac.currentTime + dur);
+}
+
+function playSound(inst) {
+  if (!ac) ac = new AudioContext();
+  switch(inst) {
+    case 'kick':  synth('sine',   60,  0.3, 0.8); break;
+    case 'snare': synth('triangle',200, 0.15, 0.6); break;
+    case 'hihat': synth('square', 800, 0.05, 0.3); break;
+    case 'bass':  synth('sawtooth',80,  0.4, 0.5); break;
+    case 'piano': synth('triangle',440, 0.5, 0.4); break;
+    case 'synth': synth('sawtooth',220, 0.3, 0.5); break;
+  }
+}
+
+function playSeq() {
+  if (!ac) ac = new AudioContext();
+  playing = true;
+  document.getElementById('status').textContent = 'Toistetaan...';
+  const bpm = parseInt(document.getElementById('bpm').value) || 120;
+  const stepMs = (60000 / bpm) / 4;
+  intervalId = setInterval(() => {
+    document.querySelectorAll('.cell').forEach(c => {
+      c.style.outline = 'none';
+    });
+    TRACKS.forEach(t => {
+      const cell = document.getElementById(t+'-'+stepIdx);
+      if (cell) cell.style.outline = '2px solid #fff';
+      if (grid[t][stepIdx]) playSound(t);
+    });
+    document.getElementById('step-display').textContent = stepIdx + 1;
+    stepIdx = (stepIdx + 1) % STEPS;
+  }, stepMs);
+}
+
+function stopSeq() {
+  playing = false;
+  clearInterval(intervalId);
+  stepIdx = 0;
+  document.querySelectorAll('.cell').forEach(c => c.style.outline = 'none');
+  document.getElementById('step-display').textContent = '0';
+  document.getElementById('status').textContent = 'Pysäytetty';
+}
+
+function clearAll() {
+  TRACKS.forEach(t => { grid[t] = new Array(STEPS).fill(false); });
+  buildGrid();
+}
+
+function exportAudio() {
+  alert('Vie ääni — Premium-ominaisuus!\n\nVoit nauhoittaa äänen suoraan selaimesta\nkäyttämällä OBS tai Audacity -ohjelmaa.');
+}
+
+buildGrid();
+
+// Précharge quelques beats
+[0,4,8,12].forEach(i => toggleCell('kick',i));
+[2,6,10,14].forEach(i => toggleCell('snare',i));
+[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].forEach(i => toggleCell('hihat',i));
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de propinas — Restaurante y Servicio</title>
+<meta name="description" content="Calculadora de consejo gratuito — restaurante y servicio. Inmediato, privado, basada en navegador.">
+<link rel="canonical" href="https://omnitools.app/el/tip-calculator/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication",
+  "name":"Calculadora de propinas — Restaurante y Servicio","description":"Calculadora de consejo gratuito — restaurante y servicio. Inmediato, privado, basada en navegador.",
+  "applicationCategory":"UtilitiesApplication","operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<style>:root{--bg:#0d0d0e;--card:#16171a;--text:#eaeaea;--muted:#9aa0a6;--accent:#00ffcc;--btn:#00ffcc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);
+     min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:12px}
+.wrap{width:100%;max-width:760px}
+nav{padding:10px 0;font-size:.9rem}nav a{color:var(--muted);text-decoration:none}
+.card{background:var(--card);border-radius:18px;padding:28px 20px;
+      box-shadow:0 8px 32px rgba(0,0,0,.45);margin-bottom:14px}
+h1{font-size:1.5rem;color:var(--accent);margin-bottom:6px}
+.desc{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.result-box{background:#0b0c0e;border:1px solid #252629;border-radius:12px;
+            padding:16px;font-size:1.4rem;font-weight:800;min-height:56px;
+            word-break:break-word;transition:opacity .18s;margin-bottom:14px}
+.btn{display:block;width:100%;border:0;border-radius:999px;padding:14px;
+     background:var(--btn);color:#001;font-weight:800;font-size:1rem;cursor:pointer;
+     margin-bottom:10px;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:#1fad54;color:#fff;font-weight:600;font-size:.92rem}
+.hist{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.hist span{background:#1c1d20;border-radius:20px;padding:4px 12px;
+           font-size:.8rem;color:var(--muted);cursor:pointer}
+.hist span:hover{color:var(--accent)}
+.ad{width:100%;min-height:90px;background:#111315;border:1px dashed #272829;
+    border-radius:10px;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-size:.78rem;margin:10px 0}
+.seo-card{background:var(--card);border-radius:14px;padding:24px 20px;
+          font-size:.88rem;line-height:1.72;color:#c8c8c8;white-space:pre-wrap}
+.seo-card h2{color:var(--accent);font-size:1rem;margin-bottom:10px}
+footer{margin:20px 0;color:var(--muted);font-size:.75rem;text-align:center}
+footer a{color:var(--muted);margin:0 6px}
+.form-g{margin-bottom:14px}
+label{display:block;margin-bottom:5px;color:var(--muted);font-size:.88rem}
+input[type=number],select,textarea{width:100%;padding:11px;background:#0b0c0e;
+  border:1px solid #252629;color:#fff;border-radius:10px;font-size:.95rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+#calc-result{font-size:1.6rem;font-weight:800;color:var(--accent);padding:14px;
+             background:#0b0c0e;border-radius:10px;margin:14px 0;text-align:center;
+             min-height:52px}
+@media(max-width:480px){h1{font-size:1.25rem}.result-box{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="/el/">&#8592; El hogar</a></nav>
+  <div class="ad">[Advertisement]</div>
+  <div class="card">
+    <h1>Calculadora de propinas — Restaurante y Servicio</h1>
+    <p class="desc">Calculadora de consejo gratuito — restaurante y servicio. Inmediato, privado, basada en navegador.</p>
+    <div class="form-g"><label>Bill total</label><input type="number" id="bill" placeholder="50.00"></div><div class="form-g"><label>Tip percentage (%)</label><input type="number" id="pct" placeholder="15" min="0" max="100"></div><div class="form-g"><label>Número de personas</label><input type="number" id="people" placeholder="2" min="1"></div>
+    <div id="calc-result">—</div>
+    <button class="btn" onclick="calculate()">Calcular</button>
+  </div>
+  <div class="ad">[Advertisement]</div>
+  <div class="seo-card">
+    <h2>&#9432; About</h2>
+    <div>Ο οδηγός χρήσης για το εργαλείο WEB "Tip Calculator — Restaurant and Service"
+
+Ο υπολογιστής δαπανών είναι ένα χρήσιμο εργαλείο για όσους θέλουν να διαχειριστούν τις δαπάνες τους σε ένα εστιατόριο. Με αυτόν τον υπολογιστή, μπορείτε να υπολογίσει τις δαπάνες σας με ευκολία, συμπεριλαμβανομένων των αποδοχών του προσωπικού.
+
+Πάροδος 1: Πληκτρολογήστε τις πληροφορίες σας
+
+Πρώτη ακολουθήστε τα παρακάτω βήματα για να χρησιμοποιήσετε το υπολογιστή δαπανών:
+
+- Πληκτρολογήστε το ποσό της δαπάνης σας (π.χ. 100 ευρώ).
+- Πληκτρολογήστε το ποσοστό της αποδοχής (π.χ. 10%).
+- Πληκτρολογήστε τον αριθμό των προσώπων που συμμετέχουν (π.χ. 2).
+
+Πάροδος 2: Υπολογισμός του ποσού της αποδοχής
+
+Μετά την εισαγωγή των πληροφοριών σας, το εργαλείο θα υπολογίσει το ποσό της αποδοχής για σας. Ο υπολογιστής θα σας δείξει το ποσό της αποδοχής σε ευρώ.
+
+Πάροδος 3: Σύνδεση των πληροφοριών σας
+
+Μπορείτε να πληκτρολογήσετε τον αριθμό των πιστωτικών πινάκων σας για να πληρώσετε το ποσό της δαπάνης. Το εργαλείο θα σας δείξει το ποσό που θα πρέπει να πληρώσετε σε ευρώ.
+
+Γιατί είναι χρήσιμο για τους χρήστες στην Ελλάδα;
+Το εργαλείο είναι χρήσιμο για τους χρήστες στην Ελλάδα επειδή επέτρεψε την απομακρυσμένη υπολογισμό των δαπανών τους με εύκολη και γρήγορη τρόπο.
+
+Επείγοντα ερωτήματα συχνής ενασχόλησης
+
+- Πώς να αλλάξω το ποσοστό της αποδοχής;
+Μπορείτε να αλλάξουν το ποσοστό της αποδοχής με την εισαγωγή νέου ποσοστού στην πλακέτα "Αποδοχή".
+
+- Πώς να πληρώσω με πιστωτικό πλάκα;
+Μπορείτε να πληρώσετε με πιστωτικό πλάκα πληκτρολογώντας τον αριθμό της πιστωτικής πλάκας σας στην πλακέτα "Πιστωτικός πλάκας".
+
+- Πώς να στείλω το αποτέλεσμα;
+Μπορείτε να στείλετε το αποτέλεσμα μέσω email πληκτρολογώντας το email σας στην πλακέτα "Email".</div>
+  </div>
+  <footer>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+  </footer>
+</div>
+<script>
+function calculate(){
+  var bill=parseFloat(document.getElementById('bill').value)||0;
+  var pct=parseFloat(document.getElementById('pct').value)||10;
+  var people=parseInt(document.getElementById('people').value)||1;
+  var tip=bill*pct/100;
+  var total=bill+tip;
+  var per=total/people;
+  document.getElementById('calc-result').textContent=
+    'Tip: '+tip.toFixed(2)+' | Total: '+total.toFixed(2)+' | Per person: '+per.toFixed(2);
+}</script>
+</body>
+</html>

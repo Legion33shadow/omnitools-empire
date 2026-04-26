@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Prompt Generator for ChatGPT and Midjourney</title>
+<meta name="description" content="Free AI Prompt Generator for ChatGPT and MidJourney. Instant Results, Works in Your Browser.">
+<meta property="og:title" content="AI Prompt Generator for ChatGPT and Midjourney">
+<meta property="og:description" content="Free AI Prompt Generator for ChatGPT and MidJourney. Instant Results, Works in Your Browser.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://omnitools.app/ms/ai-prompt-generator/">
+<link rel="alternate" hreflang="ms" href="https://omnitools.app/ms/ai-prompt-generator/">
+<link rel="alternate" hreflang="x-default" href="https://omnitools.app/en/ai-prompt-generator/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication",
+  "name":"AI Prompt Generator for ChatGPT and Midjourney","description":"Free AI Prompt Generator for ChatGPT and MidJourney. Instant Results, Works in Your Browser.",
+  "applicationCategory":"UtilitiesApplication","operatingSystem":"Any",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<style>:root{--bg:#0d0d0e;--card:#16171a;--text:#eaeaea;--muted:#9aa0a6;--accent:#00ffcc;--btn:#00ffcc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);
+     min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:12px}
+.wrap{width:100%;max-width:760px}
+nav{padding:10px 0;font-size:.9rem}nav a{color:var(--muted);text-decoration:none}
+.card{background:var(--card);border-radius:18px;padding:28px 20px;
+      box-shadow:0 8px 32px rgba(0,0,0,.45);margin-bottom:14px}
+h1{font-size:1.5rem;color:var(--accent);margin-bottom:6px}
+.desc{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.result-box{background:#0b0c0e;border:1px solid #252629;border-radius:12px;
+            padding:16px;font-size:1.4rem;font-weight:800;min-height:56px;
+            word-break:break-word;transition:opacity .18s;margin-bottom:14px}
+.btn{display:block;width:100%;border:0;border-radius:999px;padding:14px;
+     background:var(--btn);color:#001;font-weight:800;font-size:1rem;cursor:pointer;
+     margin-bottom:10px;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:#1fad54;color:#fff;font-weight:600;font-size:.92rem}
+.hist{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.hist span{background:#1c1d20;border-radius:20px;padding:4px 12px;
+           font-size:.8rem;color:var(--muted);cursor:pointer}
+.hist span:hover{color:var(--accent)}
+.ad{width:100%;min-height:90px;background:#111315;border:1px dashed #272829;
+    border-radius:10px;display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-size:.78rem;margin:10px 0}
+.seo-card{background:var(--card);border-radius:14px;padding:24px 20px;
+          font-size:.88rem;line-height:1.72;color:#c8c8c8;white-space:pre-wrap}
+.seo-card h2{color:var(--accent);font-size:1rem;margin-bottom:10px}
+footer{margin:20px 0;color:var(--muted);font-size:.75rem;text-align:center}
+footer a{color:var(--muted);margin:0 6px}
+.form-g{margin-bottom:14px}
+label{display:block;margin-bottom:5px;color:var(--muted);font-size:.88rem}
+input[type=number],select,textarea{width:100%;padding:11px;background:#0b0c0e;
+  border:1px solid #252629;color:#fff;border-radius:10px;font-size:.95rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+#calc-result{font-size:1.6rem;font-weight:800;color:var(--accent);padding:14px;
+             background:#0b0c0e;border-radius:10px;margin:14px 0;text-align:center;
+             min-height:52px}
+@media(max-width:480px){h1{font-size:1.25rem}.result-box{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="/ms/">&#8592; Hōmu</a></nav>
+  <div class="ad" id="ad-top">[Advertisement]</div>
+  <div class="card">
+    <h1>AI Prompt Generator for ChatGPT and Midjourney</h1>
+    <p class="desc">Free AI Prompt Generator for ChatGPT and MidJourney. Instant Results, Works in Your Browser.</p>
+    <div class="result-box" id="result">&#10024;</div>
+    <button class="btn" onclick="gen()">Jenerezu</button>
+    <button class="btn btn-wa" onclick="shareWA()">&#128242; Shar o Wahwatt</button>
+    <div class="hist" id="hist"></div>
+  </div>
+  <div class="ad" id="ad-mid">[Advertisement]</div>
+  <div class="seo-card">
+    <h2>&#9432; About</h2>
+    <div>Panduan Menggunakan AI Prompt Generator untuk ChatGPT dan Midjourney
+
+AI Prompt Generator adalah alat web percuma yang memudahkan anda mencipta permintaan yang efektif untuk ChatGPT dan Midjourney. Alat ini dapat membantu anda mencipta karya ciptaan yang kreatif dan kompleks dengan mudah.
+
+Langkah-Langkah Menggunakan AI Prompt Generator:
+
+1. Tatalah kepada laman AI Prompt Generator dan masukkan permintaan yang anda ingin cipta. Anda boleh memasukkan teks percuma atau menggunakan contoh permintaan yang disediakan oleh alat ini.
+2. Pilih jenis karya ciptaan yang anda ingin cipta, seperti gambar, teks, atau video. Alat ini akan memberikan anda pilihan prompt yang sesuai dengan pilihan anda.
+3. Klik butang "Cipta" untuk menghasilkan permintaan yang telah disesuaikan.
+
+Mengapa AI Prompt Generator berguna untuk pengguna Melayu?
+
+AI Prompt Generator sangat berguna bagi pengguna Melayu kerana ia dapat membantu menghasilkan karya ciptaan yang berbahasa Melayu. Alat ini juga dapat membantu meningkatkan kreativiti dan kemampuan bahasa pemula dengan mudah.
+
+Soalan Lazim (FAQ):
+
+- Saya tidak tahu cara menggunakan AI Prompt Generator, bagaimana saya boleh memulakan?
+  Anda boleh memulakan dengan memasukkan permintaan yang anda ingin cipta ke dalam ruang teks. Alat ini akan memberikan anda pilihan prompt yang sesuai.
+
+- Saya ingin mencipta gambar yang kompleks, bagaimana saya boleh melakukannya?
+  Anda boleh memilih jenis karya ciptaan sebagai "Gambar" dan memasukkan permintaan yang anda ingin cipta. Alat ini akan memberikan anda pilihan prompt yang sesuai.
+
+- Saya boleh menggunakan AI Prompt Generator untuk tujuan komersial?
+  Anda harus memastikan bahawa anda memenuhi syarat kegunaan alat ini, termasuk hak cipta dan privasi.</div>
+  </div>
+  <div class="ad" id="ad-bot">[Advertisement]</div>
+  <footer>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/ms/">Hōmu</a>
+  </footer>
+</div>
+<script>
+const D=["A city na Mars at gōlden hour, ulatra-realistik", "A wise dragon (yī wǔ lóng) teaches (jiào shuō) calligraphy (shū fǎ) to (dào) a (yī gè) child (xiao)", "A hidden café at the bottom of the ocean, art nouveau style", "An ancient library inside a giant crystal cave", "A samurai ga aru motokurabī wa tokyō no rēn no ame ni", "A forest growing inside an abandoned train station", "Einstein und Tesla treffen sich in einem modernen Kaffeehaus", "A pahch nahn a p lahnt wuh thray mohns, hahyur-dih-tayl'd", "A cat in a space suit looking at Earth from orbit", "A medieval knight discovere a smarthphone in a chest", "A lighthouse keeper who is secretly a wizard", "Robot tending a garden of glowing flowers", "A library vhere books float and sort themselves", "A gāo chū de xīng shé", "An aerial view of a rainbow waterfall into a crystal lake", "A dog wearing a business suit giving a TED talk", "An astronaut eating ramen on the surface of the moon", "A steampunk city inside a giant clock mechanism", "A gassu made entirlii of glaas that reklects the starrs", "A dragon sleeping on a pile of old books in a castle"];
+const H=[];
+const SM="Free tool: AI Prompt Generator for ChatGPT and Midjourney";
+function gen(){
+  const r=D[Math.floor(Math.random()*D.length)];
+  const el=document.getElementById('result');
+  el.style.opacity='0';
+  setTimeout(()=>{el.textContent=r;el.style.opacity='1';},130);
+  H.unshift(r);if(H.length>6)H.pop();
+  document.getElementById('hist').innerHTML=
+    H.map(x=>`<span onclick="document.getElementById('result').textContent=this.textContent">${x}</span>`).join('');
+}
+function shareWA(){
+  const r=document.getElementById('result').textContent;
+  window.open('https://wa.me/?text='+encodeURIComponent(SM+'\n\n'+r),'_blank');
+}
+if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});
+gen();
+</script>
+</body>
+</html>

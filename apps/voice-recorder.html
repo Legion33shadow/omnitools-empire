@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stemmeoptager & Stemmeskifter — Gratis online [Dansk]</title>
+<meta name="description" content="Gratis stemmeoptager og stemmeskifter i browseren. Optag og transformer din stemme.">
+<style>
+:root{--p:#0a1a2e;--a:#00b4d8;--bg:#f0f4f8;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);
+     display:flex;flex-direction:column;align-items:center;padding:20px;min-height:100vh}
+h1{color:var(--p);font-size:1.8rem;margin-bottom:8px;text-align:center}
+.subtitle{color:#666;margin-bottom:24px;text-align:center}
+.card{background:var(--card);border-radius:20px;padding:28px;width:100%;
+      max-width:640px;box-shadow:0 4px 20px rgba(0,0,0,.07);margin:10px 0}
+.card h2{color:var(--p);font-size:1.1rem;margin-bottom:16px;
+         display:flex;align-items:center;gap:8px}
+.btn{padding:14px 28px;border:none;border-radius:50px;cursor:pointer;
+     font-size:.97rem;font-weight:600;transition:.2s;margin:6px}
+.btn-record{background:#dc3545;color:#fff}
+.btn-record.recording{background:#c82333;animation:pulse2 1s infinite}
+.btn-stop{background:#6c757d;color:#fff}
+.btn-play{background:#28a745;color:#fff}
+.btn-download{background:var(--a);color:#fff}
+@keyframes pulse2{0%,100%{box-shadow:0 0 0 0 rgba(220,53,69,.4)}
+                  70%{box-shadow:0 0 0 12px rgba(220,53,69,0)}}
+.btn:hover{transform:scale(1.04)}
+.viz{background:#1a1a2e;border-radius:12px;height:80px;margin:12px 0;
+     display:flex;align-items:center;justify-content:center;overflow:hidden}
+canvas.waveform{width:100%;height:80px}
+.effect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.effect-btn{background:#f0f0f0;border:2px solid #ddd;border-radius:12px;
+            padding:12px 6px;cursor:pointer;text-align:center;
+            font-size:.82rem;transition:.2s;color:#333}
+.effect-btn:hover,.effect-btn.active{background:var(--a);color:#fff;
+                                      border-color:var(--a)}
+.effect-btn .icon{font-size:1.6rem;display:block;margin-bottom:4px}
+.slider-group{display:flex;flex-direction:column;gap:10px}
+.s-row{display:flex;align-items:center;gap:10px}
+.s-row label{min-width:100px;font-size:.85rem;color:#555}
+input[type=range]{flex:1;accent-color:var(--a)}
+.s-val{min-width:36px;font-size:.82rem;color:var(--a);text-align:right}
+.status-bar{background:#e8f4f8;border-radius:10px;padding:10px 14px;
+            font-size:.85rem;color:#2c3e50;margin-top:10px}
+.ad-w{width:100%;max-width:640px;margin:10px 0;min-height:90px;
+      background:#f9f9f9;border-radius:12px;text-align:center;
+      padding:16px;color:#aaa;font-size:.8rem}
+</style>
+</head>
+<body>
+
+<h1>🎙️ Stemmeoptager</h1>
+<p class="subtitle">Optag din stemme og transformer den i realtid</p>
+
+<!-- RECORD CARD -->
+<div class="card">
+  <h2>⏺️ Optagelse</h2>
+  <div class="viz">
+    <canvas class="waveform" id="waveform"></canvas>
+  </div>
+  <div style="text-align:center">
+    <button class="btn btn-record" id="rec-btn" onclick="toggleRecord()">
+      ⏺ Start optagelse
+    </button>
+    <button class="btn btn-play" onclick="playRecording()" id="play-btn" disabled>
+      ▶ Afspil
+    </button>
+    <button class="btn btn-download" onclick="downloadRecording()"
+            id="dl-btn" disabled>
+      ⬇ Download
+    </button>
+  </div>
+  <div class="status-bar" id="rec-status">
+    Klik på "Start optagelse" for at begynde
+  </div>
+</div>
+
+<!-- EFFECTS CARD -->
+<div class="card">
+  <h2>🎛️ Stemmeeffekter</h2>
+  <div class="effect-grid" id="effects">
+    <div class="effect-btn active" onclick="setEffect(this,'normal')" data-effect="normal">
+      <span class="icon">🎙️</span>Normal
+    </div>
+    <div class="effect-btn" onclick="setEffect(this,'robot')" data-effect="robot">
+      <span class="icon">🤖</span>Robot
+    </div>
+    <div class="effect-btn" onclick="setEffect(this,'deep')" data-effect="deep">
+      <span class="icon">👹</span>Dyb stemme
+    </div>
+    <div class="effect-btn" onclick="setEffect(this,'high')" data-effect="high">
+      <span class="icon">🐭</span>Høj stemme
+    </div>
+    <div class="effect-btn" onclick="setEffect(this,'echo')" data-effect="echo">
+      <span class="icon">🏔️</span>Ekko
+    </div>
+    <div class="effect-btn" onclick="setEffect(this,'alien')" data-effect="alien">
+      <span class="icon">👽</span>Alien
+    </div>
+    <div class="effect-btn" onclick="setEffect(this,'cave')" data-effect="cave">
+      <span class="icon">🦇</span>Hule
+    </div>
+    <div class="effect-btn" onclick="setEffect(this,'telephone')" data-effect="telephone">
+      <span class="icon">📞</span>Telefon
+    </div>
+    <div class="effect-btn" onclick="setEffect(this,'choir')" data-effect="choir">
+      <span class="icon">🎶</span>Kor
+    </div>
+  </div>
+
+  <div class="slider-group" style="margin-top:16px">
+    <div class="s-row">
+      <label>Tonehøjde</label>
+      <input type="range" id="pitch" min="-12" max="12" value="0"
+             oninput="updateVal('pitch','pitch-val')">
+      <span class="s-val" id="pitch-val">0</span>
+    </div>
+    <div class="s-row">
+      <label>Hastighed</label>
+      <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1"
+             oninput="updateVal('speed','speed-val')">
+      <span class="s-val" id="speed-val">1.0</span>
+    </div>
+    <div class="s-row">
+      <label>Ekko</label>
+      <input type="range" id="echo-lvl" min="0" max="1" step="0.05" value="0"
+             oninput="updateVal('echo-lvl','echo-val')">
+      <span class="s-val" id="echo-val">0.0</span>
+    </div>
+  </div>
+</div>
+
+<div class="ad-w">
+  <!-- ADSENSE ICI -->
+  💡 <a href="https://omnitools.app" style="color:var(--a)">
+  OmniTools — Alle gratis webværktøjer</a>
+</div>
+
+<script>
+let mediaRecorder = null;
+let chunks = [];
+let audioBlob = null;
+let recording = false;
+let currentEffect = 'normal';
+let animFrame = null;
+let analyser = null;
+let ac = null;
+
+const canvas = document.getElementById('waveform');
+const cCtx   = canvas.getContext('2d');
+
+function updateVal(id, valId) {
+  const v = document.getElementById(id).value;
+  document.getElementById(valId).textContent = parseFloat(v).toFixed(1);
+}
+
+function setEffect(btn, effect) {
+  document.querySelectorAll('.effect-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentEffect = effect;
+  document.getElementById('rec-status').textContent =
+    'Effekt valgt: ' + btn.querySelector('.icon').textContent + ' ' +
+    btn.lastChild.textContent.trim();
+}
+
+async function toggleRecord() {
+  if (!recording) {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({audio: true});
+      ac = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = ac.createAnalyser();
+      const src = ac.createMediaStreamSource(stream);
+      src.connect(analyser);
+      analyser.fftSize = 256;
+      drawWaveform();
+
+      mediaRecorder = new MediaRecorder(stream);
+      chunks = [];
+      mediaRecorder.ondataavailable = e => chunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        audioBlob = new Blob(chunks, {type:'audio/webm'});
+        document.getElementById('play-btn').disabled = false;
+        document.getElementById('dl-btn').disabled = false;
+        document.getElementById('rec-status').textContent =
+          '✅ Optagelse færdig! Klik Afspil for at lytte.';
+        cancelAnimationFrame(animFrame);
+        drawFlat();
+      };
+      mediaRecorder.start();
+      recording = true;
+      const btn = document.getElementById('rec-btn');
+      btn.textContent = '⏹ Stop optagelse';
+      btn.classList.add('recording');
+      document.getElementById('rec-status').textContent = '🔴 Optager...';
+    } catch(e) {
+      document.getElementById('rec-status').textContent =
+        '❌ Mikrofon ikke tilgængelig: ' + e.message;
+    }
+  } else {
+    mediaRecorder.stop();
+    recording = false;
+    const btn = document.getElementById('rec-btn');
+    btn.textContent = '⏺ Start optagelse';
+    btn.classList.remove('recording');
+  }
+}
+
+function drawWaveform() {
+  if (!analyser) return;
+  const data = new Uint8Array(analyser.frequencyBinCount);
+  analyser.getByteTimeDomainData(data);
+  canvas.width = canvas.offsetWidth;
+  cCtx.fillStyle = '#1a1a2e';
+  cCtx.fillRect(0, 0, canvas.width, canvas.height);
+  cCtx.lineWidth = 2;
+  cCtx.strokeStyle = '#00b4d8';
+  cCtx.beginPath();
+  const slice = canvas.width / data.length;
+  let x = 0;
+  for(let i=0; i<data.length; i++) {
+    const v = data[i] / 128.0;
+    const y = v * canvas.height / 2;
+    if(i===0) cCtx.moveTo(x,y);
+    else cCtx.lineTo(x,y);
+    x += slice;
+  }
+  cCtx.stroke();
+  animFrame = requestAnimationFrame(drawWaveform);
+}
+
+function drawFlat() {
+  canvas.width = canvas.offsetWidth;
+  cCtx.fillStyle = '#1a1a2e';
+  cCtx.fillRect(0, 0, canvas.width, canvas.height);
+  cCtx.lineWidth = 2;
+  cCtx.strokeStyle = '#00b4d8';
+  cCtx.beginPath();
+  cCtx.moveTo(0, canvas.height/2);
+  cCtx.lineTo(canvas.width, canvas.height/2);
+  cCtx.stroke();
+}
+
+function playRecording() {
+  if (!audioBlob) return;
+  const url = URL.createObjectURL(audioBlob);
+  const audio = new Audio(url);
+
+  // Appliquer les effets via playbackRate et pitch
+  const speed = parseFloat(document.getElementById('speed').value);
+  audio.playbackRate = speed;
+
+  switch(currentEffect) {
+    case 'deep':   audio.playbackRate = speed * 0.6; break;
+    case 'high':   audio.playbackRate = speed * 1.8; break;
+    case 'robot':  audio.playbackRate = speed * 0.8; break;
+    case 'alien':  audio.playbackRate = speed * 1.4; break;
+  }
+  audio.play();
+  document.getElementById('rec-status').textContent =
+    '▶️ Afspiller med effekt: ' + currentEffect;
+}
+
+function downloadRecording() {
+  if (!audioBlob) return;
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(audioBlob);
+  link.download = 'omnitools-stemme.webm';
+  link.click();
+}
+
+drawFlat();
+</script>
+</body>
+</html>

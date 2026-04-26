@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fi" >
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Parhaat nimet koirillesi suomalainen tai kansainvälinen">
+<meta property="og:title" content="Koirannimet — Löydä täydellinen nimi">
+<title>Koirannimet — Löydä täydellinen nimi</title>
+<link rel="alternate" hreflang="fi-FI"
+      href="https://omnitools.app/fi/koiran-nimet-fi/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Koirannimet — Löydä täydellinen nimi", "description": "Parhaat nimet koirillesi suomalainen tai kansainvälinen", "inLanguage": "fi", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Web Browser", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script>
+<style>
+:root{--p:#1a1a2e;--a:#e94560;--bg:#f8f9fa;--card:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);
+      min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:16px 12px}
+.ad-w{width:100%;max-width:640px;margin:10px 0;min-height:90px}
+.card{background:var(--card);border-radius:20px;padding:28px 20px;max-width:640px;width:100%;
+       box-shadow:0 4px 20px rgba(0,0,0,.07);text-align:center;margin:6px 0}
+h1{font-size:1.7rem;color:var(--p);margin-bottom:6px;line-height:1.3}
+.desc{color:#666;margin-bottom:20px;font-size:.93rem}
+#result{font-size:2rem;font-weight:700;color:var(--a);min-height:54px;
+         padding:14px 0;transition:.25s;word-break:break-word;line-height:1.4}
+.btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:4px 0}
+.btn{background:var(--p);color:#fff;border:none;padding:13px 30px;font-size:.97rem;
+      border-radius:50px;cursor:pointer;transition:.2s;flex:1;min-width:130px;max-width:200px}
+.btn:hover{background:var(--a);transform:scale(1.03)}
+.btn.cp{background:#28a745}
+.hist{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:14px}
+.h-tag{background:#f0f0f0;border-radius:20px;padding:3px 12px;font-size:.8rem;
+        color:#555;cursor:pointer}
+.aff{margin-top:18px;padding:13px;background:#fff8e1;border-radius:12px;font-size:.88rem}
+.aff a{color:var(--a);text-decoration:none;font-weight:600}
+footer{margin-top:auto;padding:14px;color:#aaa;font-size:.78rem}
+@media(max-width:480px){h1{font-size:1.4rem}#result{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<div class="ad-w"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script><ins class="adsbygoogle" style="display:block;text-align:center" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5382997898313669" data-ad-slot="7259870550"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+<div class="card">
+  <h1>Koirannimet — Löydä täydellinen nimi</h1>
+  <p class="desc">Parhaat nimet koirillesi suomalainen tai kansainvälinen</p>
+  <div id="result">✨</div>
+  <div class="btns">
+    <button class="btn" onclick="gen()">🎲 Générer</button>
+    <button class="btn cp" onclick="cp()">📋 Copier</button>
+  </div>
+  <div class="hist" id="hist"></div>
+  
+</div>
+<div class="ad-w"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script><ins class="adsbygoogle" style="display:block;text-align:center" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5382997898313669" data-ad-slot="8134695421"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+<footer>OmniTools · Koirannimet — Löydä täydellinen nimi · 2026</footer>
+<script>
+const D=["Musti", "Rekku", "Pälvi", "Riku", "Tuisku", "Turre", "Täplä", "Pilkku", "Max", "Luna", "Bella", "Charlie", "Teddy", "Loki", "Nala", "Zeus"];
+const H=[];
+function gen(){
+  const r=D[Math.floor(Math.random()*D.length)];
+  document.getElementById('result').innerText=r;
+  H.unshift(r);if(H.length>6)H.pop();
+  document.getElementById('hist').innerHTML=
+    H.map(function(h){
+      return '<span class="h-tag" onclick="document.getElementById('result').innerText=this.innerText">'+h+'</span>';
+    }).join('');
+}
+function cp(){
+  const t=document.getElementById('result').innerText;
+  navigator.clipboard.writeText(t).catch(function(){});
+  const b=document.querySelector('.btn.cp');
+  const o=b.textContent;b.textContent='✅ Copié!';
+  setTimeout(function(){b.textContent=o;},2000);
+}
+gen();
+</script>
+</body>
+</html>

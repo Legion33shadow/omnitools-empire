@@ -1,0 +1,13 @@
+{
+  "id": "koerte-nimed-et",
+  "title": "Koerte Nimede Generaator",
+  "lang": "et",
+  "country": "EE",
+  "desc": "Leia oma koerele ideaalne nimi",
+  "category": "generator",
+  "aff_url": null,
+  "aff_text": null,
+  "built_at": "2026-04-27 02:45:09.680095",
+  "type": "generator",
+  "item_count": 16
+}
