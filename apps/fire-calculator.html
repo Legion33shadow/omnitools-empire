@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FIRE Calculator | OmniTools Empire</title>
+<meta name="description" content="Calculate your Financial Independence date. Free tool, updated 2025.">
+<meta name="google-site-verification" content="dZovMOV47epEcL1P2-9uaZXL0yvAXAigKJLHVB3sEJY">
+<meta property="og:title" content="FIRE Calculator">
+<meta property="og:type" content="website">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>* { box-sizing: border-box; margin: 0; padding: 0; }body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a;       color: #e0e6ff; min-height: 100vh; }header { background: linear-gradient(135deg,#1a1f3a,#2d3561);         padding: 28px 20px; text-align: center;         border-bottom: 1px solid #3d4580; }header h1 { font-size: 1.7rem; color: #7c8cff; }header p { color: #8892b0; font-size: .9rem; margin-top: 6px; }nav { background: #12172b; padding: 10px 20px;      text-align: center; border-bottom: 1px solid #2d3561; }nav a { color: #7c8cff; text-decoration: none;        margin: 0 10px; font-size: .85rem; font-weight: 600; }.ad { background: #12172b; border: 1px dashed #3d4580;      border-radius: 8px; padding: 14px; margin: 16px auto;      max-width: 860px; text-align: center; }.app { max-width: 800px; margin: 24px auto; padding: 0 16px; }.card { background: #12172b; border: 1px solid #2d3561;        border-radius: 14px; padding: 28px; margin-bottom: 20px; }h2 { color: #7c8cff; margin-bottom: 20px; }label { display: block; color: #8892b0; font-size: .85rem;        margin-bottom: 6px; font-weight: 600; }input, select, textarea { width: 100%; padding: 11px 14px;  background: #0a0e1a; border: 1px solid #3d4580;  border-radius: 8px; color: #e0e6ff; font-size: 1rem;  margin-bottom: 14px; outline: none; }input:focus, select:focus { border-color: #7c8cff; }button { width: 100%; padding: 14px;  background: linear-gradient(135deg,#7c8cff,#a855f7);  color: #fff; border: none; border-radius: 10px;  font-size: 1rem; font-weight: 700; cursor: pointer;  margin-bottom: 10px; transition: opacity .2s; }button:hover { opacity: .9; }.result { background: #0a0e1a; border: 1px solid #3d4580;          border-radius: 12px; padding: 24px;          text-align: center; margin-top: 16px; }.big { font-size: 2rem; font-weight: 700; color: #7c8cff; }.lbl { color: #8892b0; font-size: .85rem; margin-top: 4px; }.g2 { display: grid; grid-template-columns: 1fr 1fr;      gap: 16px; margin-top: 16px; }.stat { background: #1a1f3a; border-radius: 8px;        padding: 16px; text-align: center; }.stat .v { font-size: 1.2rem; font-weight: 700; }.stat .l { color: #8892b0; font-size: .8rem; }table { width: 100%; border-collapse: collapse; font-size: .85rem; }th { background: #1a1f3a; color: #7c8cff; padding: 9px; text-align: left; }td { padding: 9px; border-bottom: 1px solid #1a1f3a; color: #c8d0e7; }footer { text-align: center; padding: 20px;         color: #3d4580; font-size: .8rem; margin-top: 20px; }footer a { color: #7c8cff; text-decoration: none; }@media (max-width:600px) { .g2 { grid-template-columns: 1fr; } }</style>
+</head>
+<body>
+<header><h1>🔧 FIRE Calculator</h1><p>Free Professional Tool — Updated April 2026</p></header>
+<nav><a href="https://legion33shadow.github.io/omnitools-empire/">Home</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/">All Tools</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/compound-interest-calculator.html">Compound</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/crypto-portfolio-tracker.html">Crypto</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/loan-calculator-pro.html">Loan</a></nav>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<div class="app"><div class="card"><h2>🔥 FIRE Calculator — Financial Independence</h2><p style='color:#8892b0;margin-bottom:16px'>Calculate when you can retire early using the FIRE method</p><label>Annual Spending in Retirement ($)</label><input id='fire_spend' type='number' value='40000'><label>Current Portfolio Value ($)</label><input id='fire_saved' type='number' value='50000'><label>Expected Annual Return (%)</label><input id='fire_rate' type='number' value='7' step='0.5'><label>Monthly Contribution ($)</label><input id='fire_contrib' type='number' value='2000'><label>Withdrawal Rate</label><select id='fire_wr'><option value='3'>3% (Very Conservative)</option><option value='3.5'>3.5% (Conservative)</option><option value='4' selected>4% (Standard FIRE Rule)</option><option value='4.5'>4.5% (Moderate)</option><option value='5'>5% (Aggressive)</option></select><button onclick='calcFIRE()'>🔥 Calculate FIRE Date</button><div id='fire_res'></div><script>function calcFIRE(){
+  const spend=+document.getElementById('fire_spend').value||0;
+  const saved=+document.getElementById('fire_saved').value||0;
+  const rate=+document.getElementById('fire_rate').value/100||0.07;
+  const contrib=+document.getElementById('fire_contrib').value||0;
+  const wr=+document.getElementById('fire_wr').value/100||0.04;
+  const target=spend/wr;
+  const need=target-saved;
+  let years=0,portfolio=saved;
+  while(portfolio<target && years<100){
+    portfolio=portfolio*(1+rate)+contrib*12;
+    years++;
+  }
+  const f=v=>'$'+v.toLocaleString('en-US',{maximumFractionDigits:0});
+  const yr=new Date().getFullYear();
+  document.getElementById('fire_res').innerHTML=`
+    <div class='result'>
+      <div class='big' style='color:#fbbf24'>${years} years</div>
+      <div class='lbl'>Until Financial Independence (${yr+years})</div>
+      <div class='g2'>
+        <div class='stat'><div class='v' style='color:#7c8cff'>${f(target)}</div><div class='l'>FIRE Target (${(wr*100).toFixed(0)}% rule)</div></div>
+        <div class='stat'><div class='v' style='color:#4ade80'>${f(portfolio)}</div><div class='l'>Portfolio at FIRE</div></div>
+        <div class='stat'><div class='v' style='color:#a855f7'>${f(spend)}</div><div class='l'>Annual Spend</div></div>
+        <div class='stat'><div class='v' style='color:#60a5fa'>${f(contrib*12)}</div><div class='l'>Annual Contribution</div></div>
+      </div>
+    </div>`;}
+</script></div></div>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<footer>© 2026 OmniTools Empire | <a href="https://legion33shadow.github.io/omnitools-empire/privacy.html">Privacy</a> | <a href="https://legion33shadow.github.io/omnitools-empire/sitemap.xml">Sitemap</a></footer>
+</body></html>

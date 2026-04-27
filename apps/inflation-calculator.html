@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Inflation Calculator | OmniTools Empire</title>
+<meta name="description" content="Calculate purchasing power and inflation impact. Free tool, updated 2025.">
+<meta name="google-site-verification" content="dZovMOV47epEcL1P2-9uaZXL0yvAXAigKJLHVB3sEJY">
+<meta property="og:title" content="Inflation Calculator">
+<meta property="og:type" content="website">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>* { box-sizing: border-box; margin: 0; padding: 0; }body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a;       color: #e0e6ff; min-height: 100vh; }header { background: linear-gradient(135deg,#1a1f3a,#2d3561);         padding: 28px 20px; text-align: center;         border-bottom: 1px solid #3d4580; }header h1 { font-size: 1.7rem; color: #7c8cff; }header p { color: #8892b0; font-size: .9rem; margin-top: 6px; }nav { background: #12172b; padding: 10px 20px;      text-align: center; border-bottom: 1px solid #2d3561; }nav a { color: #7c8cff; text-decoration: none;        margin: 0 10px; font-size: .85rem; font-weight: 600; }.ad { background: #12172b; border: 1px dashed #3d4580;      border-radius: 8px; padding: 14px; margin: 16px auto;      max-width: 860px; text-align: center; }.app { max-width: 800px; margin: 24px auto; padding: 0 16px; }.card { background: #12172b; border: 1px solid #2d3561;        border-radius: 14px; padding: 28px; margin-bottom: 20px; }h2 { color: #7c8cff; margin-bottom: 20px; }label { display: block; color: #8892b0; font-size: .85rem;        margin-bottom: 6px; font-weight: 600; }input, select, textarea { width: 100%; padding: 11px 14px;  background: #0a0e1a; border: 1px solid #3d4580;  border-radius: 8px; color: #e0e6ff; font-size: 1rem;  margin-bottom: 14px; outline: none; }input:focus, select:focus { border-color: #7c8cff; }button { width: 100%; padding: 14px;  background: linear-gradient(135deg,#7c8cff,#a855f7);  color: #fff; border: none; border-radius: 10px;  font-size: 1rem; font-weight: 700; cursor: pointer;  margin-bottom: 10px; transition: opacity .2s; }button:hover { opacity: .9; }.result { background: #0a0e1a; border: 1px solid #3d4580;          border-radius: 12px; padding: 24px;          text-align: center; margin-top: 16px; }.big { font-size: 2rem; font-weight: 700; color: #7c8cff; }.lbl { color: #8892b0; font-size: .85rem; margin-top: 4px; }.g2 { display: grid; grid-template-columns: 1fr 1fr;      gap: 16px; margin-top: 16px; }.stat { background: #1a1f3a; border-radius: 8px;        padding: 16px; text-align: center; }.stat .v { font-size: 1.2rem; font-weight: 700; }.stat .l { color: #8892b0; font-size: .8rem; }table { width: 100%; border-collapse: collapse; font-size: .85rem; }th { background: #1a1f3a; color: #7c8cff; padding: 9px; text-align: left; }td { padding: 9px; border-bottom: 1px solid #1a1f3a; color: #c8d0e7; }footer { text-align: center; padding: 20px;         color: #3d4580; font-size: .8rem; margin-top: 20px; }footer a { color: #7c8cff; text-decoration: none; }@media (max-width:600px) { .g2 { grid-template-columns: 1fr; } }</style>
+</head>
+<body>
+<header><h1>🔧 Inflation Calculator</h1><p>Free Professional Tool — Updated April 2026</p></header>
+<nav><a href="https://legion33shadow.github.io/omnitools-empire/">Home</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/">All Tools</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/compound-interest-calculator.html">Compound</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/crypto-portfolio-tracker.html">Crypto</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/loan-calculator-pro.html">Loan</a></nav>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<div class="app"><div class="card"><h2>📊 Inflation Calculator</h2><p style='color:#8892b0;margin-bottom:16px'>Calculate the real purchasing power of money over time</p><label>Amount ($)</label><input id='inf_amt' type='number' value='10000'><label>From Year</label><input id='inf_from' type='number' value='2000' min='1900' max='2100'><label>To Year</label><input id='inf_to' type='number' value='2025' min='1900' max='2100'><label>Annual Inflation Rate (%)</label><select id='inf_rate'><option value='2'>2% (Target rate)</option><option value='3' selected>3% (Historical US avg)</option><option value='4'>4% (Elevated)</option><option value='6'>6% (High inflation)</option><option value='8'>8% (Very high)</option><option value='10'>10% (Hyperinflation)</option></select><button onclick='calcInflation()'>Calculate Inflation Impact</button><div id='inf_res'></div><script>function calcInflation(){
+  const amount=+document.getElementById('inf_amt').value||0;
+  const fromY=+document.getElementById('inf_from').value||2000;
+  const toY=+document.getElementById('inf_to').value||2025;
+  const rate=+document.getElementById('inf_rate').value/100||0.03;
+  const years=toY-fromY;
+  const adjusted=amount*Math.pow(1+rate,years);
+  const loss=adjusted-amount;
+  const power=((amount/adjusted)*100).toFixed(1);
+  const f=v=>'$'+v.toFixed(2);
+  document.getElementById('inf_res').innerHTML=`
+    <div class='result'>
+      <div class='big'>${f(adjusted)}</div>
+      <div class='lbl'>${f(amount)} in ${fromY} = ${f(adjusted)} in ${toY}</div>
+      <div class='g2'>
+        <div class='stat'><div class='v' style='color:#f87171'>${f(loss)}</div><div class='l'>Purchasing Power Lost</div></div>
+        <div class='stat'><div class='v' style='color:#fbbf24'>${power}%</div><div class='l'>Purchasing Power Remaining</div></div>
+        <div class='stat'><div class='v'>${years}</div><div class='l'>Years</div></div>
+        <div class='stat'><div class='v' style='color:#7c8cff'>${(rate*100).toFixed(1)}%</div><div class='l'>Annual Inflation Rate</div></div>
+      </div>
+    </div>`;}
+</script></div></div>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<footer>© 2026 OmniTools Empire | <a href="https://legion33shadow.github.io/omnitools-empire/privacy.html">Privacy</a> | <a href="https://legion33shadow.github.io/omnitools-empire/sitemap.xml">Sitemap</a></footer>
+</body></html>

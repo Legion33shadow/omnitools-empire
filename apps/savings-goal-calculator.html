@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Savings Goal Calculator | OmniTools Empire</title>
+<meta name="description" content="Calculate monthly savings needed to reach your goal. Free tool, updated 2025.">
+<meta name="google-site-verification" content="dZovMOV47epEcL1P2-9uaZXL0yvAXAigKJLHVB3sEJY">
+<meta property="og:title" content="Savings Goal Calculator">
+<meta property="og:type" content="website">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>* { box-sizing: border-box; margin: 0; padding: 0; }body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a;       color: #e0e6ff; min-height: 100vh; }header { background: linear-gradient(135deg,#1a1f3a,#2d3561);         padding: 28px 20px; text-align: center;         border-bottom: 1px solid #3d4580; }header h1 { font-size: 1.7rem; color: #7c8cff; }header p { color: #8892b0; font-size: .9rem; margin-top: 6px; }nav { background: #12172b; padding: 10px 20px;      text-align: center; border-bottom: 1px solid #2d3561; }nav a { color: #7c8cff; text-decoration: none;        margin: 0 10px; font-size: .85rem; font-weight: 600; }.ad { background: #12172b; border: 1px dashed #3d4580;      border-radius: 8px; padding: 14px; margin: 16px auto;      max-width: 860px; text-align: center; }.app { max-width: 800px; margin: 24px auto; padding: 0 16px; }.card { background: #12172b; border: 1px solid #2d3561;        border-radius: 14px; padding: 28px; margin-bottom: 20px; }h2 { color: #7c8cff; margin-bottom: 20px; }label { display: block; color: #8892b0; font-size: .85rem;        margin-bottom: 6px; font-weight: 600; }input, select, textarea { width: 100%; padding: 11px 14px;  background: #0a0e1a; border: 1px solid #3d4580;  border-radius: 8px; color: #e0e6ff; font-size: 1rem;  margin-bottom: 14px; outline: none; }input:focus, select:focus { border-color: #7c8cff; }button { width: 100%; padding: 14px;  background: linear-gradient(135deg,#7c8cff,#a855f7);  color: #fff; border: none; border-radius: 10px;  font-size: 1rem; font-weight: 700; cursor: pointer;  margin-bottom: 10px; transition: opacity .2s; }button:hover { opacity: .9; }.result { background: #0a0e1a; border: 1px solid #3d4580;          border-radius: 12px; padding: 24px;          text-align: center; margin-top: 16px; }.big { font-size: 2rem; font-weight: 700; color: #7c8cff; }.lbl { color: #8892b0; font-size: .85rem; margin-top: 4px; }.g2 { display: grid; grid-template-columns: 1fr 1fr;      gap: 16px; margin-top: 16px; }.stat { background: #1a1f3a; border-radius: 8px;        padding: 16px; text-align: center; }.stat .v { font-size: 1.2rem; font-weight: 700; }.stat .l { color: #8892b0; font-size: .8rem; }table { width: 100%; border-collapse: collapse; font-size: .85rem; }th { background: #1a1f3a; color: #7c8cff; padding: 9px; text-align: left; }td { padding: 9px; border-bottom: 1px solid #1a1f3a; color: #c8d0e7; }footer { text-align: center; padding: 20px;         color: #3d4580; font-size: .8rem; margin-top: 20px; }footer a { color: #7c8cff; text-decoration: none; }@media (max-width:600px) { .g2 { grid-template-columns: 1fr; } }</style>
+</head>
+<body>
+<header><h1>🔧 Savings Goal Calculator</h1><p>Free Professional Tool — Updated April 2026</p></header>
+<nav><a href="https://legion33shadow.github.io/omnitools-empire/">Home</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/">All Tools</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/compound-interest-calculator.html">Compound</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/crypto-portfolio-tracker.html">Crypto</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/loan-calculator-pro.html">Loan</a></nav>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<div class="app"><div class="card"><h2>🎯 Savings Goal Calculator</h2><p style='color:#8892b0;margin-bottom:16px'>Calculate how much to save monthly to reach your goal</p><label>Savings Goal ($)</label><input id='sg_goal' type='number' value='20000'><label>Already Saved ($)</label><input id='sg_saved' type='number' value='2000'><label>Expected Annual Interest Rate (%)</label><input id='sg_rate' type='number' value='4' step='0.1'><label>Time to Reach Goal (months)</label><input id='sg_months' type='number' value='24'><button onclick='calcSavings()'>🎯 Calculate Monthly Savings</button><div id='sg_res'></div><script>function calcSavings(){
+  const goal=+document.getElementById('sg_goal').value||0;
+  const saved=+document.getElementById('sg_saved').value||0;
+  const rate=+document.getElementById('sg_rate').value/100/12;
+  const months=+document.getElementById('sg_months').value||12;
+  const need=goal-saved;
+  let monthly;
+  if(rate===0){
+    monthly=need/months;
+  }else{
+    monthly=need*rate/(Math.pow(1+rate,months)-1);
+  }
+  const total=monthly*months;
+  const interest=total-(need>0?need:0);
+  const f=v=>'$'+Math.abs(v).toFixed(2);
+  const today=new Date();
+  today.setMonth(today.getMonth()+months);
+  const goalDate=today.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  document.getElementById('sg_res').innerHTML=`
+    <div class='result'>
+      <div class='big'>${f(monthly)}/mo</div>
+      <div class='lbl'>Required Monthly Savings — Goal: ${goalDate}</div>
+      <div class='g2'>
+        <div class='stat'><div class='v' style='color:#7c8cff'>${f(goal)}</div><div class='l'>Savings Goal</div></div>
+        <div class='stat'><div class='v' style='color:#4ade80'>${f(saved)}</div><div class='l'>Already Saved</div></div>
+        <div class='stat'><div class='v' style='color:#f87171'>${f(need>0?need:0)}</div><div class='l'>Still Needed</div></div>
+        <div class='stat'><div class='v' style='color:#fbbf24'>${f(interest)}</div><div class='l'>Interest Earned</div></div>
+      </div>
+    </div>`;}
+</script></div></div>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<footer>© 2026 OmniTools Empire | <a href="https://legion33shadow.github.io/omnitools-empire/privacy.html">Privacy</a> | <a href="https://legion33shadow.github.io/omnitools-empire/sitemap.xml">Sitemap</a></footer>
+</body></html>
