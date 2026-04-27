@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BMI & Health Calculator | OmniTools Empire</title>
+<meta name="description" content="Calculate BMI, BMR and ideal weight. Free online tool, updated 2025.">
+<meta name="google-site-verification" content="dZovMOV47epEcL1P2-9uaZXL0yvAXAigKJLHVB3sEJY">
+<meta property="og:title" content="BMI & Health Calculator">
+<meta property="og:type" content="website">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a;
+       color: #e0e6ff; min-height: 100vh; }
+header { background: linear-gradient(135deg,#1a1f3a,#2d3561);
+         padding: 28px 20px; text-align: center;
+         border-bottom: 1px solid #3d4580; }
+header h1 { font-size: 1.7rem; color: #7c8cff; }
+header p { color: #8892b0; font-size: .9rem; margin-top: 6px; }
+nav { background: #12172b; padding: 10px 20px;
+      text-align: center; border-bottom: 1px solid #2d3561; }
+nav a { color: #7c8cff; text-decoration: none;
+        margin: 0 10px; font-size: .85rem; font-weight: 600; }
+.ad { background: #12172b; border: 1px dashed #3d4580;
+      border-radius: 8px; padding: 14px; margin: 16px auto;
+      max-width: 860px; text-align: center; }
+.app { max-width: 800px; margin: 24px auto; padding: 0 16px; }
+.card { background: #12172b; border: 1px solid #2d3561;
+        border-radius: 14px; padding: 28px; margin-bottom: 20px; }
+label { display: block; color: #8892b0; font-size: .85rem;
+        margin-bottom: 6px; font-weight: 600; }
+input, select { width: 100%; padding: 11px 14px; background: #0a0e1a;
+                border: 1px solid #3d4580; border-radius: 8px;
+                color: #e0e6ff; font-size: 1rem; margin-bottom: 14px;
+                outline: none; }
+input:focus, select:focus { border-color: #7c8cff; }
+button { width: 100%; padding: 14px;
+         background: linear-gradient(135deg,#7c8cff,#a855f7);
+         color: #fff; border: none; border-radius: 10px;
+         font-size: 1rem; font-weight: 700; cursor: pointer;
+         transition: .2s; margin-bottom: 10px; }
+button:hover { opacity: .9; }
+.result { background: #0a0e1a; border: 1px solid #3d4580;
+          border-radius: 12px; padding: 24px;
+          text-align: center; margin-top: 16px; }
+.result .big { font-size: 2rem; font-weight: 700; color: #7c8cff; }
+.result .lbl { color: #8892b0; font-size: .85rem; margin-top: 4px; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 16px; }
+.stat { background: #1a1f3a; border-radius: 8px;
+        padding: 16px; text-align: center; }
+.stat .v { font-size: 1.2rem; font-weight: 700; }
+.stat .l { color: #8892b0; font-size: .8rem; }
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+th { background: #1a1f3a; color: #7c8cff; padding: 8px; text-align: left; }
+td { padding: 8px; border-bottom: 1px solid #1a1f3a; color: #c8d0e7; }
+footer { text-align: center; padding: 20px;
+         color: #3d4580; font-size: .8rem; margin-top: 20px; }
+footer a { color: #7c8cff; text-decoration: none; }
+@media (max-width:600px) { .g2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header><h1>🔧 BMI & Health Calculator</h1><p>Free Professional Tool — Updated 2025</p></header>
+<nav><a href="https://legion33shadow.github.io/omnitools-empire/">Home</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/">All Tools</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/loan-calculator-pro.html">Loan</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/currency-converter.html">Currency</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/crypto-tax-calculator.html">Crypto</a></nav>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<div class="app"><div class="card"><h2 style='color:#7c8cff;margin-bottom:20px'>⚖️ BMI & Health Calculator</h2><label>Unit</label><select id='bu' onchange='toggleUnit()'><option value='metric'>Metric (kg/cm)</option><option value='imperial'>Imperial (lbs/in)</option></select><div id='bm'><label>Weight (kg)</label><input id='bwkg' type='number' value='70'><label>Height (cm)</label><input id='bhcm' type='number' value='175'></div><div id='bi' style='display:none'><label>Weight (lbs)</label><input id='bwlb' type='number' value='154'><label>Height (in)</label><input id='bhin' type='number' value='69'></div><label>Age</label><input id='bage' type='number' value='30'><label>Gender</label><select id='bgender'><option value='m'>Male</option><option value='f'>Female</option></select><button onclick='calcBMI()'>Calculate</button><div id='bres'></div><script>function toggleUnit(){
+  const u=document.getElementById('bu').value;
+  document.getElementById('bm').style.display=u==='metric'?'block':'none';
+  document.getElementById('bi').style.display=u==='imperial'?'block':'none';
+}
+function calcBMI(){
+  const u=document.getElementById('bu').value;
+  let w,h;
+  if(u==='metric'){w=+document.getElementById('bwkg').value;h=+document.getElementById('bhcm').value/100;}
+  else{w=+document.getElementById('bwlb').value*0.453592;h=+document.getElementById('bhin').value*0.0254;}
+  const age=+document.getElementById('bage').value;
+  const g=document.getElementById('bgender').value;
+  const bmi=w/(h*h);
+  const bmr=g==='m'?(10*w+6.25*h*100-5*age+5):(10*w+6.25*h*100-5*age-161);
+  let cat,color;
+  if(bmi<18.5){cat='Underweight';color='#60a5fa';}
+  else if(bmi<25){cat='Normal';color='#4ade80';}
+  else if(bmi<30){cat='Overweight';color='#fbbf24';}
+  else{cat='Obese';color='#f87171';}
+  const iL=(18.5*h*h).toFixed(1),iH=(24.9*h*h).toFixed(1);
+  document.getElementById('bres').innerHTML=`
+    <div class='result'><div class='big' style='color:${color}'>${bmi.toFixed(1)}</div>
+    <div class='lbl'>BMI — <b style='color:${color}'>${cat}</b></div>
+    <div class='g2'>
+      <div class='stat'><div class='v'>${bmr.toFixed(0)} kcal</div><div class='l'>BMR</div></div>
+      <div class='stat'><div class='v'>${(bmr*1.55).toFixed(0)} kcal</div><div class='l'>TDEE active</div></div>
+      <div class='stat'><div class='v'>${iL}–${iH} kg</div><div class='l'>Ideal Weight</div></div>
+      <div class='stat'><div class='v'>${((w-iL*1)>0?'+':'')}${(w-iL*1).toFixed(1)} kg</div><div class='l'>vs Ideal</div></div>
+    </div></div>`;}
+</script></div></div>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<footer>© 2025 OmniTools Empire | <a href="https://legion33shadow.github.io/omnitools-empire/privacy.html">Privacy</a> | <a href="https://legion33shadow.github.io/omnitools-empire/sitemap.xml">Sitemap</a></footer>
+</body></html>

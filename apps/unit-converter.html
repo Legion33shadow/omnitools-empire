@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Universal Unit Converter | OmniTools Empire</title>
+<meta name="description" content="Convert length, weight, area, volume, speed and data. Free online tool, updated 2025.">
+<meta name="google-site-verification" content="dZovMOV47epEcL1P2-9uaZXL0yvAXAigKJLHVB3sEJY">
+<meta property="og:title" content="Universal Unit Converter">
+<meta property="og:type" content="website">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0e1a;
+       color: #e0e6ff; min-height: 100vh; }
+header { background: linear-gradient(135deg,#1a1f3a,#2d3561);
+         padding: 28px 20px; text-align: center;
+         border-bottom: 1px solid #3d4580; }
+header h1 { font-size: 1.7rem; color: #7c8cff; }
+header p { color: #8892b0; font-size: .9rem; margin-top: 6px; }
+nav { background: #12172b; padding: 10px 20px;
+      text-align: center; border-bottom: 1px solid #2d3561; }
+nav a { color: #7c8cff; text-decoration: none;
+        margin: 0 10px; font-size: .85rem; font-weight: 600; }
+.ad { background: #12172b; border: 1px dashed #3d4580;
+      border-radius: 8px; padding: 14px; margin: 16px auto;
+      max-width: 860px; text-align: center; }
+.app { max-width: 800px; margin: 24px auto; padding: 0 16px; }
+.card { background: #12172b; border: 1px solid #2d3561;
+        border-radius: 14px; padding: 28px; margin-bottom: 20px; }
+label { display: block; color: #8892b0; font-size: .85rem;
+        margin-bottom: 6px; font-weight: 600; }
+input, select { width: 100%; padding: 11px 14px; background: #0a0e1a;
+                border: 1px solid #3d4580; border-radius: 8px;
+                color: #e0e6ff; font-size: 1rem; margin-bottom: 14px;
+                outline: none; }
+input:focus, select:focus { border-color: #7c8cff; }
+button { width: 100%; padding: 14px;
+         background: linear-gradient(135deg,#7c8cff,#a855f7);
+         color: #fff; border: none; border-radius: 10px;
+         font-size: 1rem; font-weight: 700; cursor: pointer;
+         transition: .2s; margin-bottom: 10px; }
+button:hover { opacity: .9; }
+.result { background: #0a0e1a; border: 1px solid #3d4580;
+          border-radius: 12px; padding: 24px;
+          text-align: center; margin-top: 16px; }
+.result .big { font-size: 2rem; font-weight: 700; color: #7c8cff; }
+.result .lbl { color: #8892b0; font-size: .85rem; margin-top: 4px; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 16px; }
+.stat { background: #1a1f3a; border-radius: 8px;
+        padding: 16px; text-align: center; }
+.stat .v { font-size: 1.2rem; font-weight: 700; }
+.stat .l { color: #8892b0; font-size: .8rem; }
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+th { background: #1a1f3a; color: #7c8cff; padding: 8px; text-align: left; }
+td { padding: 8px; border-bottom: 1px solid #1a1f3a; color: #c8d0e7; }
+footer { text-align: center; padding: 20px;
+         color: #3d4580; font-size: .8rem; margin-top: 20px; }
+footer a { color: #7c8cff; text-decoration: none; }
+@media (max-width:600px) { .g2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header><h1>🔧 Universal Unit Converter</h1><p>Free Professional Tool — Updated 2025</p></header>
+<nav><a href="https://legion33shadow.github.io/omnitools-empire/">Home</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/">All Tools</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/loan-calculator-pro.html">Loan</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/currency-converter.html">Currency</a> <a href="https://legion33shadow.github.io/omnitools-empire/apps/crypto-tax-calculator.html">Crypto</a></nav>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<div class="app"><div class="card"><h2 style='color:#7c8cff;margin-bottom:20px'>📐 Universal Unit Converter</h2><label>Category</label><select id='ucat' onchange='updateUnits()'><option value='length'>Length</option><option value='weight'>Weight</option><option value='area'>Area</option><option value='volume'>Volume</option><option value='speed'>Speed</option><option value='data'>Data</option></select><label>Value</label><input id='uval' type='number' value='1' oninput='convertUnit()'><div style='display:grid;grid-template-columns:1fr 1fr;gap:10px'><div><label>From</label><select id='ufrom' onchange='convertUnit()'></select></div><div><label>To</label><select id='uto' onchange='convertUnit()'></select></div></div><div id='ures' style='margin-top:16px'></div><script>const UNITS={
+  length:{meter:1,kilometer:0.001,centimeter:100,millimeter:1000,mile:0.000621371,yard:1.09361,foot:3.28084,inch:39.3701},
+  weight:{kilogram:1,gram:1000,pound:2.20462,ounce:35.274,ton:0.001,stone:0.157473},
+  area:{sqmeter:1,sqkilometer:1e-6,sqfoot:10.7639,sqyard:1.19599,acre:0.000247105,hectare:0.0001},
+  volume:{liter:1,milliliter:1000,gallon:0.264172,quart:1.05669,pint:2.11338,cup:4.22675},
+  speed:{'m/s':1,'km/h':3.6,mph:2.23694,knot:1.94384},
+  data:{byte:1,kilobyte:0.0009765625,megabyte:9.537e-7,gigabyte:9.313e-10,terabyte:9.095e-13,bit:8}
+};
+function updateUnits(){
+  const cat=document.getElementById('ucat').value;
+  const keys=Object.keys(UNITS[cat]);
+  ['ufrom','uto'].forEach((id,i)=>{
+    document.getElementById(id).innerHTML=keys.map((k,j)=>`<option value='${k}' ${j==i?'selected':''}>${k}</option>`).join('');
+  });
+  convertUnit();
+}
+function convertUnit(){
+  const cat=document.getElementById('ucat').value;
+  const val=+document.getElementById('uval').value||0;
+  const from=document.getElementById('ufrom').value;
+  const to=document.getElementById('uto').value;
+  const f=UNITS[cat][from];const t=UNITS[cat][to];
+  const result=(val/f)*t;
+  const fmt=result>0.001&&result<1e9?+result.toFixed(8):result.toExponential(4);
+  document.getElementById('ures').innerHTML=`
+    <div class='result'><div class='big'>${fmt}</div>
+    <div class='lbl'>${val} ${from} = ${fmt} ${to}</div></div>`;}
+updateUnits();
+</script></div></div>
+<div class="ad"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<footer>© 2025 OmniTools Empire | <a href="https://legion33shadow.github.io/omnitools-empire/privacy.html">Privacy</a> | <a href="https://legion33shadow.github.io/omnitools-empire/sitemap.xml">Sitemap</a></footer>
+</body></html>

@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
-Sitemap: https://Legion33shadow.github.io/omnitools-empire/sitemap.xml
+Disallow: /.git/
+
+Sitemap: https://legion33shadow.github.io/omnitools-empire/sitemap.xml
+Sitemap: https://legion33shadow.github.io/omnitools-empire/feed.xml
+
+User-agent: Googlebot
+Crawl-delay: 0
