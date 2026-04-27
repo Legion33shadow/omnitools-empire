@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>QR Code Generator — OmniTools Empire</title>
+<meta name="description" content="Générateur de QR Code professionnel">
+<meta name="google-site-verification" content="dZovMOV47epEcL1P2-9uaZXL0yvAXAigKJLHVB3sEJY">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>* {box-sizing:border-box;margin:0;padding:0}
+body {font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+header {background:linear-gradient(135deg,#1e2937,#334155);padding:3rem 1rem;text-align:center}
+h1 {font-size:2.4rem;color:#60a5fa;margin-bottom:0.5rem}
+.tag {background:#22c55e;color:#052e16;padding:4px 12px;border-radius:9999px;font-size:0.85rem;font-weight:700}
+nav {background:#1e2937;padding:1rem;text-align:center;border-bottom:1px solid #334155}
+nav a {color:#94a3b8;margin:0 1rem;text-decoration:none;font-weight:500}
+nav a:hover {color:#60a5fa}
+.section {max-width:1100px;margin:2rem auto;padding:0 1rem}
+.grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.card {background:#1e2937;border:1px solid #334155;border-radius:16px;padding:1.5rem;transition:all .2s}
+.card:hover {border-color:#60a5fa;transform:translateY(-4px);box-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1)}
+.card h3 {color:#a5b4fc;margin-bottom:0.8rem;font-size:1.25rem}
+.footer {background:#0f172a;padding:2rem;text-align:center;color:#64748b;font-size:0.9rem}
+ .card{margin:2rem auto;max-width:700px}</style>
+</head>
+<body>
+<header><h1>QR Code Generator</h1><p>Outil Professionnel — Mis à jour Avril 2026</p></header>
+<nav><a href="https://legion33shadow.github.io/omnitools-empire/">← Retour Accueil</a></nav>
+<div class="section"><div class="card"><h3>📱 QR Code Generator</h3><input id='qrtext' placeholder='Texte ou URL' style='width:100%;padding:12px;margin:10px 0'><button onclick='generateQR()'>Générer QR</button><div id='qrout' style='margin:20px 0'></div><script>function generateQR(){let t=document.getElementById('qrtext').value||'https://legion33shadow.github.io';let q=`<img src='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(t)}' style='max-width:300px;border-radius:12px'>`;document.getElementById('qrout').innerHTML=q}</script></div></div>
+</body>
+</html>

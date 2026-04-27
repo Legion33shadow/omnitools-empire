@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Retirement Planner 2025 — OmniTools Empire</title>
+<meta name="description" content="Calculez exactement quand vous pourrez prendre votre retraite">
+<meta name="google-site-verification" content="dZovMOV47epEcL1P2-9uaZXL0yvAXAigKJLHVB3sEJY">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>* {box-sizing:border-box;margin:0;padding:0}
+body {font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.6}
+header {background:linear-gradient(135deg,#1e2937,#334155);padding:3rem 1rem;text-align:center}
+h1 {font-size:2.4rem;color:#60a5fa;margin-bottom:0.5rem}
+.tag {background:#22c55e;color:#052e16;padding:4px 12px;border-radius:9999px;font-size:0.85rem;font-weight:700}
+nav {background:#1e2937;padding:1rem;text-align:center;border-bottom:1px solid #334155}
+nav a {color:#94a3b8;margin:0 1rem;text-decoration:none;font-weight:500}
+nav a:hover {color:#60a5fa}
+.section {max-width:1100px;margin:2rem auto;padding:0 1rem}
+.grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.card {background:#1e2937;border:1px solid #334155;border-radius:16px;padding:1.5rem;transition:all .2s}
+.card:hover {border-color:#60a5fa;transform:translateY(-4px);box-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1)}
+.card h3 {color:#a5b4fc;margin-bottom:0.8rem;font-size:1.25rem}
+.footer {background:#0f172a;padding:2rem;text-align:center;color:#64748b;font-size:0.9rem}
+ .card{margin:2rem auto;max-width:700px}</style>
+</head>
+<body>
+<header><h1>Retirement Planner 2025</h1><p>Outil Professionnel — Mis à jour Avril 2026</p></header>
+<nav><a href="https://legion33shadow.github.io/omnitools-empire/">← Retour Accueil</a></nav>
+<div class="section"><div class="card"><h3>🔮 Retirement Planner</h3><label>Âge actuel</label><input id='age' type='number' value='35'><label>Âge de retraite souhaité</label><input id='retage' type='number' value='65'><label>Épargne mensuelle (€)</label><input id='save' type='number' value='800'><label>Rendement annuel (%)</label><input id='rate' type='number' value='7' step='0.1'><button onclick='calcRet()'>Calculer</button><div id='retres'></div><script>function calcRet(){let a=parseFloat(document.getElementById('age').value),r=parseFloat(document.getElementById('retage').value),s=parseFloat(document.getElementById('save').value),rate=parseFloat(document.getElementById('rate').value)/100/12,y=(r-a)*12;let fv=s*((Math.pow(1+rate,y)-1)/rate);document.getElementById('retres').innerHTML=`<div style='background:#1e2937;padding:20px;border-radius:12px;margin-top:15px'><div style='font-size:2rem;color:#60a5fa'>${Math.round(fv).toLocaleString('fr-FR')} €</div><div style='color:#94a3b8'>au moment de la retraite</div></div>`}</script></div></div>
+</body>
+</html>
