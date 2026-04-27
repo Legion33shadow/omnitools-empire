@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Currency Converter — Live Rates</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#0f2027;color:#e0e0e0;min-height:100vh}
+  .header{background:linear-gradient(135deg,#203a43,#2c5364);padding:24px;text-align:center;color:#fff}
+  .header h1{font-size:1.8rem} .header p{opacity:.8;font-size:.95rem;margin-top:4px}
+  .ad{background:#1a2a35;border:1px dashed #2c5364;border-radius:8px;padding:16px;margin:16px auto;max-width:900px;text-align:center;color:#667}
+  .app{max-width:780px;margin:24px auto;background:#1a2a35;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.4)}
+  label{display:block;margin-bottom:6px;color:#8899aa;font-size:.9rem}
+  input,select{width:100%;padding:12px;background:#0f2027;border:1px solid #2c5364;border-radius:8px;color:#fff;font-size:1rem;margin-bottom:16px}
+  button{width:100%;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:10px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:.2s}
+  button:hover{opacity:.9} .result{background:#0f2027;border-radius:12px;padding:24px;margin-top:20px;text-align:center}
+  .result .val{font-size:2.2rem;font-weight:700;color:#667eea} .result .lbl{color:#8899aa;font-size:.9rem}
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.85rem}
+  th{background:#203a43;color:#fff;padding:8px} td{padding:8px;border-bottom:1px solid #1a2a35;text-align:right}
+  tr:hover td{background:#203a43} footer{text-align:center;padding:20px;color:#445;font-size:.8rem}
+</style>
+</head>
+<body>
+<div class="header"><h1>Currency Converter — Live Rates</h1><p>Free professional calculator — Updated 2025</p></div>
+<div class="ad">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="app">
+  <h2 style="margin-bottom:20px;color:#667eea">Currency Converter</h2>
+  <label>Amount</label><input id="amount" type="number" value="100">
+  <label>From</label>
+  <select id="from">
+    <option value="USD" selected>USD — US Dollar</option>
+    <option value="EUR">EUR — Euro</option>
+    <option value="GBP">GBP — British Pound</option>
+    <option value="BTC">BTC — Bitcoin</option>
+    <option value="ETH">ETH — Ethereum</option>
+    <option value="JPY">JPY — Japanese Yen</option>
+    <option value="CAD">CAD — Canadian Dollar</option>
+    <option value="AUD">AUD — Australian Dollar</option>
+    <option value="CHF">CHF — Swiss Franc</option>
+  </select>
+  <label>To</label>
+  <select id="to">
+    <option value="EUR" selected>EUR — Euro</option>
+    <option value="USD">USD — US Dollar</option>
+    <option value="GBP">GBP — British Pound</option>
+    <option value="BTC">BTC — Bitcoin</option>
+    <option value="ETH">ETH — Ethereum</option>
+    <option value="JPY">JPY — Japanese Yen</option>
+    <option value="CAD">CAD — Canadian Dollar</option>
+    <option value="AUD">AUD — Australian Dollar</option>
+    <option value="CHF">CHF — Swiss Franc</option>
+  </select>
+  <button onclick="convertCurrency()">Convert</button>
+  <div id="currency-res"></div>
+</div>
+<script>
+async function convertCurrency(){
+  const amt=parseFloat(document.getElementById('amount').value)||1;
+  const from=document.getElementById('from').value;
+  const to=document.getElementById('to').value;
+  document.getElementById('currency-res').innerHTML='<p style="color:#667eea">Loading live rates...</p>';
+  try{
+    const r=await fetch(`https://api.exchangerate-api.com/v4/latest/${from}`);
+    const d=await r.json();
+    const rate=d.rates[to];
+    const result=(amt*rate).toFixed(6);
+    document.getElementById('currency-res').innerHTML=`
+      <div class="result">
+        <div class="val">${result} ${to}</div>
+        <div class="lbl">${amt} ${from} = ${result} ${to}</div>
+        <div style="color:#8899aa;font-size:.8rem;margin-top:8px">Live rate: 1 ${from} = ${rate} ${to}</div>
+      </div>`;
+  }catch(e){
+    document.getElementById('currency-res').innerHTML='<p style="color:#f66">Error fetching rates. Try again.</p>';
+  }
+}
+</script>
+<div class="ad">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<footer>© 2025 | <a href="/sitemap.xml" style="color:#667eea">Sitemap</a></footer>
+</body></html>

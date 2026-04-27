@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ROI & Investment Calculator</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5382997898313669" crossorigin="anonymous"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#0f2027;color:#e0e0e0;min-height:100vh}
+  .header{background:linear-gradient(135deg,#203a43,#2c5364);padding:24px;text-align:center;color:#fff}
+  .header h1{font-size:1.8rem} .header p{opacity:.8;font-size:.95rem;margin-top:4px}
+  .ad{background:#1a2a35;border:1px dashed #2c5364;border-radius:8px;padding:16px;margin:16px auto;max-width:900px;text-align:center;color:#667}
+  .app{max-width:780px;margin:24px auto;background:#1a2a35;border-radius:16px;padding:32px;box-shadow:0 4px 24px rgba(0,0,0,.4)}
+  label{display:block;margin-bottom:6px;color:#8899aa;font-size:.9rem}
+  input,select{width:100%;padding:12px;background:#0f2027;border:1px solid #2c5364;border-radius:8px;color:#fff;font-size:1rem;margin-bottom:16px}
+  button{width:100%;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:10px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:.2s}
+  button:hover{opacity:.9} .result{background:#0f2027;border-radius:12px;padding:24px;margin-top:20px;text-align:center}
+  .result .val{font-size:2.2rem;font-weight:700;color:#667eea} .result .lbl{color:#8899aa;font-size:.9rem}
+  table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.85rem}
+  th{background:#203a43;color:#fff;padding:8px} td{padding:8px;border-bottom:1px solid #1a2a35;text-align:right}
+  tr:hover td{background:#203a43} footer{text-align:center;padding:20px;color:#445;font-size:.8rem}
+</style>
+</head>
+<body>
+<div class="header"><h1>ROI & Investment Calculator</h1><p>Free professional calculator — Updated 2025</p></div>
+<div class="ad">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<div class="app">
+  <h2 style="margin-bottom:20px;color:#667eea">ROI & Investment Calculator</h2>
+  <label>Initial Investment ($)</label><input id="init" type="number" value="10000">
+  <label>Expected Annual Return (%)</label><input id="ret" type="number" value="8" step="0.5">
+  <label>Investment Period (years)</label><input id="yrs" type="number" value="10" min="1" max="50">
+  <label>Monthly Contribution ($)</label><input id="monthly" type="number" value="500">
+  <button onclick="calcROI()">Calculate ROI</button>
+  <div id="roi-res"></div>
+</div>
+<script>
+function calcROI(){
+  const P=parseFloat(document.getElementById('init').value)||0;
+  const r=parseFloat(document.getElementById('ret').value)/100;
+  const y=parseInt(document.getElementById('yrs').value)||1;
+  const m=parseFloat(document.getElementById('monthly').value)||0;
+  const rm=r/12; const n=y*12;
+  const fv_lump=P*Math.pow(1+r,y);
+  const fv_monthly=m*((Math.pow(1+rm,n)-1)/rm);
+  const total=fv_lump+fv_monthly;
+  const invested=P+m*n;
+  const gain=total-invested;
+  const roi=((gain/invested)*100).toFixed(1);
+  const f=v=>v.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+  document.getElementById('roi-res').innerHTML=`
+    <div class="result">
+      <div class="val">${f(total)}</div><div class="lbl">Final Portfolio Value</div>
+      <div style="display:flex;gap:16px;margin-top:16px;justify-content:center;flex-wrap:wrap">
+        <div><div style="font-size:1.1rem;color:#4ecdc4">${f(gain)}</div><div class="lbl">Total Gain</div></div>
+        <div><div style="font-size:1.1rem;color:#667eea">${roi}%</div><div class="lbl">ROI</div></div>
+        <div><div style="font-size:1.1rem;color:#8899aa">${f(invested)}</div><div class="lbl">Total Invested</div></div>
+      </div>
+    </div>`;
+}
+</script>
+<div class="ad">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5382997898313669" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<footer>© 2025 | <a href="/sitemap.xml" style="color:#667eea">Sitemap</a></footer>
+</body></html>
